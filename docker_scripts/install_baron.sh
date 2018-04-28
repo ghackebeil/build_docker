@@ -1,11 +1,11 @@
 #
 # Install Baron
 #
-RUN echo ""
-RUN echo "================"
-RUN echo "INSTALLING BARON"
-RUN echo "================"
-RUN echo ""
+RUN echo "" && \
+    echo "================" && \
+    echo "INSTALLING BARON" && \
+    echo "================" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip

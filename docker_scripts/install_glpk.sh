@@ -1,11 +1,11 @@
 #
 # Install Glpk
 #
-RUN echo ""
-RUN echo "==============="
-RUN echo "INSTALLING GLPK"
-RUN echo "==============="
-RUN echo ""
+RUN echo "" && \
+    echo "===============" && \
+    echo "INSTALLING GLPK" && \
+    echo "===============" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz

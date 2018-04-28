@@ -1,11 +1,11 @@
 #
 # Install GAMS
 #
-RUN echo ""
-RUN echo "==============="
-RUN echo "INSTALLING GAMS"
-RUN echo "==============="
-RUN echo ""
+RUN echo "" && \
+    echo "===============" && \
+    echo "INSTALLING GAMS" && \
+    echo "===============" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"

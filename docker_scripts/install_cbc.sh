@@ -1,11 +1,11 @@
 #
 # Install CBC
 #
-RUN echo ""
-RUN echo "=============="
-RUN echo "INSTALLING CBC"
-RUN echo "=============="
-RUN echo ""
+RUN echo "" && \
+    echo "==============" && \
+    echo "INSTALLING CBC" && \
+    echo "==============" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz

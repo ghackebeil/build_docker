@@ -1,11 +1,11 @@
 #
 # Install gjh_asl_json
 #
-RUN echo ""
-RUN echo "======================="
-RUN echo "INSTALLING GJH_ASL_JSON"
-RUN echo "======================="
-RUN echo ""
+RUN echo "" && \
+    echo "=======================" && \
+    echo "INSTALLING GJH_ASL_JSON" && \
+    echo "=======================" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip

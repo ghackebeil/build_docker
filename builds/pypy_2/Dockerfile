@@ -6,11 +6,11 @@ RUN ln -s "$(which pypy)" /usr/local/bin/python
 #
 # Install common Linux libraries
 #
-RUN echo ""
-RUN echo "======================"
-RUN echo "INSTALLING COMMON LIBS"
-RUN echo "======================"
-RUN echo ""
+RUN echo "" && \
+    echo "======================" && \
+    echo "INSTALLING COMMON LIBS" && \
+    echo "======================" && \
+    echo ""
 RUN apt-get -q -y update
 RUN apt-get -q -y upgrade
 RUN apt-get -q -y install build-essential libssl-dev libffi-dev
@@ -23,11 +23,11 @@ RUN apt-get -q -y install enchant
 #
 # Install GAMS
 #
-RUN echo ""
-RUN echo "==============="
-RUN echo "INSTALLING GAMS"
-RUN echo "==============="
-RUN echo ""
+RUN echo "" && \
+    echo "===============" && \
+    echo "INSTALLING GAMS" && \
+    echo "===============" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"
@@ -51,11 +51,11 @@ ENV PATH="${GAMSDIR}:${PATH}"
 #
 # Install Baron
 #
-RUN echo ""
-RUN echo "================"
-RUN echo "INSTALLING BARON"
-RUN echo "================"
-RUN echo ""
+RUN echo "" && \
+    echo "================" && \
+    echo "INSTALLING BARON" && \
+    echo "================" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
@@ -66,11 +66,11 @@ ENV PATH="${PREFIX}/${TARGET}:${PATH}"
 #
 # Install gjh_asl_json
 #
-RUN echo ""
-RUN echo "======================="
-RUN echo "INSTALLING GJH_ASL_JSON"
-RUN echo "======================="
-RUN echo ""
+RUN echo "" && \
+    echo "=======================" && \
+    echo "INSTALLING GJH_ASL_JSON" && \
+    echo "=======================" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
@@ -83,11 +83,11 @@ ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 #
 # Install Glpk
 #
-RUN echo ""
-RUN echo "==============="
-RUN echo "INSTALLING GLPK"
-RUN echo "==============="
-RUN echo ""
+RUN echo "" && \
+    echo "===============" && \
+    echo "INSTALLING GLPK" && \
+    echo "===============" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz
@@ -103,11 +103,11 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Ipopt
 #
-RUN echo ""
-RUN echo "================"
-RUN echo "INSTALLING IPOPT"
-RUN echo "================"
-RUN echo ""
+RUN echo "" && \
+    echo "================" && \
+    echo "INSTALLING IPOPT" && \
+    echo "================" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
@@ -128,11 +128,11 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install CBC
 #
-RUN echo ""
-RUN echo "=============="
-RUN echo "INSTALLING CBC"
-RUN echo "=============="
-RUN echo ""
+RUN echo "" && \
+    echo "==============" && \
+    echo "INSTALLING CBC" && \
+    echo "==============" && \
+    echo ""
 ARG PREFIX="/root"
 ARG TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
@@ -154,11 +154,11 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install common Python libraries
 #
-RUN echo ""
-RUN echo "======================"
-RUN echo "INSTALLING PYTHON LIBS"
-RUN echo "======================"
-RUN echo ""
+RUN echo "" && \
+    echo "======================" && \
+    echo "INSTALLING PYTHON LIBS" && \
+    echo "======================" && \
+    echo ""
 RUN pip install -U pip setuptools wheel
 RUN pip install cffi
 RUN pip install numpy
