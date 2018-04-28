@@ -6,7 +6,7 @@ RUN ln -s "$(which pypy3)" /usr/local/bin/python
 #
 # Install common Linux libraries
 #
-RUN cd . && apt-get -y update && cd -
+RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install build-essential libssl-dev libffi-dev
 RUN apt-get -y install wget git subversion
@@ -20,7 +20,7 @@ RUN apt-get -y install enchant
 RUN PREFIX=/root
 RUN TARGET="glpk-4.65"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && wget https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz && cd -
+RUN cd ${PREFIX} && wget "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tar.gz && cd -
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
 RUN mkdir ${PREFIX}/${TARGET}/build
@@ -35,7 +35,7 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 RUN PREFIX=/root
 RUN TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && wget https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz && cd -
+RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL && cd -
@@ -55,7 +55,7 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 RUN PREFIX=/root
 RUN TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && wget https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz && cd -
+RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL && cd -
@@ -76,7 +76,7 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 RUN PREFIX=/root
 RUN TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && wget https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip && cd -
+RUN cd ${PREFIX} && wget "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip" && cd -
 RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
 ENV PATH="${PREFIX}/${TARGET}:${PATH}"
@@ -88,7 +88,7 @@ RUN VERSION="25.0.3"
 RUN TARGET="linux_x64_64_sfx.exe"
 RUN mkdir ${PREFIX}/GAMS_${VERSION}
 RUN cd ${PREFIX}/GAMS_${VERSION} && \
-    wget https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET} && \
+    wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
     cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -
@@ -111,7 +111,7 @@ ENV PATH="${GAMSDIR}:${PATH}"
 RUN PREFIX=/root
 RUN TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && wget https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master -O ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && wget "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
 RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL && cd -
