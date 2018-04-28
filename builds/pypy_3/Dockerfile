@@ -23,100 +23,98 @@ ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"
 RUN mkdir ${PREFIX}/GAMS_${VERSION}
 RUN cd ${PREFIX}/GAMS_${VERSION} && \
-    wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
-    cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET} && cd -
-RUN echo ${GAMSDIR}
+    wget -q "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}"
+RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET}
+RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} > /dev/null
+RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET}
 ARG GAMSDIR="`ls ${PREFIX}/GAMS_${VERSION}`"
 ENV PATH="${GAMSDIR}:${PATH}"
 # TODO: Install GAMS Python API
 # python 2.6
-#cd ${GAMSDIR}/apifiles/Python/api_26 && python setup.py install && cd -
+#cd ${GAMSDIR}/apifiles/Python/api_26 && python setup.py install
 # python 2.7
-#cd ${GAMSDIR}/apifiles/Python/api && python setup.py install && cd -
+#cd ${GAMSDIR}/apifiles/Python/api && python setup.py install
 # python 3.4 / 3.5
-#cd ${GAMSDIR}/apifiles/Python/api_34 && python setup.py install && cd -
+#cd ${GAMSDIR}/apifiles/Python/api_34 && python setup.py install
 # python 3.6
-#cd ${GAMSDIR}/apifiles/Python/api_36 && python setup.py install && cd -
+#cd ${GAMSDIR}/apifiles/Python/api_36 && python setup.py install
 #
 # Install Baron
 #
 ARG PREFIX="/root"
 ARG TARGET="baron-lin64"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && wget "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip" && cd -
-RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
+RUN cd ${PREFIX} && wget -q "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip"
+RUN cd ${PREFIX} && unzip ${TARGET}.zip
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
 ENV PATH="${PREFIX}/${TARGET}:${PATH}"
 #
 # Install gjh_asl_json
 #
 ARG PREFIX="/root"
 ARG TARGET="gjh_asl_json-master"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && wget "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL && cd -
-RUN cd ${PREFIX}/${TARGET} && make && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
+RUN cd ${PREFIX} && wget -q "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip
+RUN cd ${PREFIX} && unzip ${TARGET}.zip
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
+RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL
+RUN cd ${PREFIX}/${TARGET} && make > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 #
 # Install Glpk
 #
 ARG PREFIX="/root"
 ARG TARGET="glpk-4.65"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && wget "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz" && cd -
-RUN cd ${PREFIX} && tar xf ${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz
+RUN cd ${PREFIX} && wget -q "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz"
+RUN cd ${PREFIX} && tar xf ${TARGET}.tar.gz
+RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
     ../configure CXX=g++ CC=gcc F77=gfortran --prefix=${PREFIX}/${TARGET}/build && \
-    make -j4 && \
-    make install && cd -
+    make -j4 > /dev/null && \
+    make install
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Ipopt
 #
 ARG PREFIX="/root"
 ARG TARGET="Ipopt-3.12.9"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz" && cd -
-RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
+RUN cd ${PREFIX} && wget -q "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz"
+RUN cd ${PREFIX} && tar xf ${TARGET}.tgz
+RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
     ../configure CXX=g++ CC=gcc F77=gfortran && \
-    make -j4 && \
-    make install && cd -
+    make -j4 > /dev/null && \
+    make install
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install CBC
 #
 ARG PREFIX="/root"
 ARG TARGET="Cbc-2.9.9"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz" && cd -
-RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Glpk && ./get.Glpk && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis && cd -
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
+RUN cd ${PREFIX} && wget -q "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz"
+RUN cd ${PREFIX} && tar xf ${TARGET}.tgz
+RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Glpk && ./get.Glpk
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
     ../configure CXX=g++ CC=gcc F77=gfortran --disable-mysql && \
-    make -j4 && \
-    make install && cd -
+    make -j4 > /dev/null && \
+    make install
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install common Python libraries
