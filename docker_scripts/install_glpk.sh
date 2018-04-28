@@ -3,6 +3,8 @@
 #
 RUN PREFIX=/root
 RUN TARGET="glpk-4.65"
+RUN echo ${PREFIX}
+RUN echo ${TARGET}
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
 RUN cd ${PREFIX} && wget "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tar.gz && cd -
