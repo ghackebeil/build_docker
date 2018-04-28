@@ -1,6 +1,5 @@
 import os
 import argparse
-import tempfile
 
 base = \
 """FROM {source_image}
@@ -8,14 +7,6 @@ base = \
 MAINTAINER Pyomo Developers
 
 """
-
-image_list = [('pypy:2','pypy','pypy_2'),
-              ('pypy:3','pypy3','pypy_3'),
-              ('python:2.7','python','python_2.7'),
-              ('python:3.5','python','python_3.5'),
-              ('python:3.6','python','python_3.6'),
-              ('continuumio/anaconda','python','anaconda_2'),
-              ('continuumio/anaconda3','python','anaconda_3')]
 
 installs = ['install_scripts/install_libs.sh',
             'install_scripts/install_gams.sh',
@@ -62,8 +53,3 @@ if __name__ == "__main__":
     create_dockerfile(args.source_image,
                       args.python_exe,
                       args.dirname)
-"""
-import yaml
-with open('.travis.yml') as f:
-    pass
-"""
