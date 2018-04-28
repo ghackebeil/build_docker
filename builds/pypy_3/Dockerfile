@@ -6,6 +6,11 @@ RUN ln -s "$(which pypy3)" /usr/local/bin/python
 #
 # Install common Linux libraries
 #
+RUN echo ""
+RUN echo "======================"
+RUN echo "INSTALLING COMMON LIBS"
+RUN echo "======================"
+RUN echo ""
 RUN apt-get -q -y update
 RUN apt-get -q -y upgrade
 RUN apt-get -q -y install build-essential libssl-dev libffi-dev
@@ -18,6 +23,11 @@ RUN apt-get -q -y install enchant
 #
 # Install GAMS
 #
+RUN echo ""
+RUN echo "==============="
+RUN echo "INSTALLING GAMS"
+RUN echo "==============="
+RUN echo ""
 ARG PREFIX="/root"
 ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"
@@ -41,28 +51,43 @@ ENV PATH="${GAMSDIR}:${PATH}"
 #
 # Install Baron
 #
+RUN echo ""
+RUN echo "================"
+RUN echo "INSTALLING BARON"
+RUN echo "================"
+RUN echo ""
 ARG PREFIX="/root"
 ARG TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
 RUN cd ${PREFIX} && wget -q "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip"
-RUN cd ${PREFIX} && unzip ${TARGET}.zip
+RUN cd ${PREFIX} && unzip -q ${TARGET}.zip
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
 ENV PATH="${PREFIX}/${TARGET}:${PATH}"
 #
 # Install gjh_asl_json
 #
+RUN echo ""
+RUN echo "======================="
+RUN echo "INSTALLING GJH_ASL_JSON"
+RUN echo "======================="
+RUN echo ""
 ARG PREFIX="/root"
 ARG TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
 RUN cd ${PREFIX} && wget -q "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip
-RUN cd ${PREFIX} && unzip ${TARGET}.zip
+RUN cd ${PREFIX} && unzip -q ${TARGET}.zip
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
-RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL
+RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL > /dev/null
 RUN cd ${PREFIX}/${TARGET} && make > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 #
 # Install Glpk
 #
+RUN echo ""
+RUN echo "==============="
+RUN echo "INSTALLING GLPK"
+RUN echo "==============="
+RUN echo ""
 ARG PREFIX="/root"
 ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz
@@ -71,54 +96,69 @@ RUN cd ${PREFIX} && tar xf ${TARGET}.tar.gz
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
-    ../configure CXX=g++ CC=gcc F77=gfortran --prefix=${PREFIX}/${TARGET}/build && \
+    ../configure CXX=g++ CC=gcc F77=gfortran --prefix=${PREFIX}/${TARGET}/build > /dev/null && \
     make -j4 > /dev/null && \
-    make install
+    make install > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Ipopt
 #
+RUN echo ""
+RUN echo "================"
+RUN echo "INSTALLING IPOPT"
+RUN echo "================"
+RUN echo ""
 ARG PREFIX="/root"
 ARG TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
 RUN cd ${PREFIX} && wget -q "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz"
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps > /dev/null
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
-    ../configure CXX=g++ CC=gcc F77=gfortran && \
+    ../configure CXX=g++ CC=gcc F77=gfortran > /dev/null && \
     make -j4 > /dev/null && \
-    make install
+    make install > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install CBC
 #
+RUN echo ""
+RUN echo "=============="
+RUN echo "INSTALLING CBC"
+RUN echo "=============="
+RUN echo ""
 ARG PREFIX="/root"
 ARG TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
 RUN cd ${PREFIX} && wget -q "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz"
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Glpk && ./get.Glpk
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Glpk && ./get.Glpk > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps > /dev/null
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
-    ../configure CXX=g++ CC=gcc F77=gfortran --disable-mysql && \
+    ../configure CXX=g++ CC=gcc F77=gfortran --disable-mysql > /dev/null && \
     make -j4 > /dev/null && \
-    make install
+    make install > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install common Python libraries
 #
+RUN echo ""
+RUN echo "======================"
+RUN echo "INSTALLING PYTHON LIBS"
+RUN echo "======================"
+RUN echo ""
 RUN pip install -U pip setuptools wheel
 RUN pip install cffi
 RUN pip install numpy

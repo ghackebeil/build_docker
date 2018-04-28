@@ -1,6 +1,11 @@
 #
 # Install common Python libraries
 #
+RUN echo ""
+RUN echo "======================"
+RUN echo "INSTALLING PYTHON LIBS"
+RUN echo "======================"
+RUN echo ""
 RUN pip install -U pip setuptools wheel
 RUN pip install cffi
 RUN pip install numpy
