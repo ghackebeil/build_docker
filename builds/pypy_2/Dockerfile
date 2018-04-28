@@ -17,6 +17,8 @@ RUN apt-get -y install enchant
 #
 # Install Glpk
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="glpk-4.65"
 RUN echo ${PREFIX}
@@ -34,6 +36,8 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Ipopt
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
@@ -54,6 +58,8 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install CBC
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
@@ -75,6 +81,8 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Baron
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
@@ -85,9 +93,13 @@ ENV PATH="${PREFIX}/${TARGET}:${PATH}"
 #
 # Install GAMS
 #
+ARG PREFIX
+ARG TARGET
+ARG VERSION
+ARG GAMSDIR
 RUN PREFIX=/root
-RUN VERSION="25.0.3"
 RUN TARGET="linux_x64_64_sfx.exe"
+RUN VERSION="25.0.3"
 RUN mkdir ${PREFIX}/GAMS_${VERSION}
 RUN cd ${PREFIX}/GAMS_${VERSION} && \
     wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
@@ -110,6 +122,8 @@ ENV PATH="${GAMSDIR}:${PATH}"
 #
 # Install gjh_asl_json
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -

@@ -1,6 +1,8 @@
 #
 # Install Ipopt
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -

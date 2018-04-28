@@ -1,6 +1,8 @@
 #
 # Install Baron
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -

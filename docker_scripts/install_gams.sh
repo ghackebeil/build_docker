@@ -1,9 +1,13 @@
 #
 # Install GAMS
 #
+ARG PREFIX
+ARG TARGET
+ARG VERSION
+ARG GAMSDIR
 RUN PREFIX=/root
-RUN VERSION="25.0.3"
 RUN TARGET="linux_x64_64_sfx.exe"
+RUN VERSION="25.0.3"
 RUN mkdir ${PREFIX}/GAMS_${VERSION}
 RUN cd ${PREFIX}/GAMS_${VERSION} && \
     wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \

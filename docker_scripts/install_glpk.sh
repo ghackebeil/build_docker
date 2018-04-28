@@ -1,6 +1,8 @@
 #
 # Install Glpk
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="glpk-4.65"
 RUN echo ${PREFIX}

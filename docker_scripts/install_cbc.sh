@@ -1,6 +1,8 @@
 #
 # Install CBC
 #
+ARG PREFIX
+ARG TARGET
 RUN PREFIX=/root
 RUN TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
