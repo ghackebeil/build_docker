@@ -7,5 +7,7 @@ RUN echo "" && \
     echo "INSTALLING MORE PYTHON LIBS" && \
     echo "===========================" && \
     echo ""
-RUN pip install pandas
-RUN pip install pyodbc
+RUN pip install --no-cache-dir \
+    numba \
+    pandas \
+    pyodbc

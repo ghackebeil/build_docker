@@ -6,19 +6,24 @@ RUN echo "" && \
     echo "INSTALLING PYTHON LIBS" && \
     echo "======================" && \
     echo ""
-RUN pip install -U pip setuptools wheel
-RUN pip install cffi
-RUN pip install numpy
-RUN pip install scipy
-RUN pip install matplotlib
-RUN pip install mpi4py
-RUN pip install cryptography
-RUN pip install sympy
-RUN pip install networkx
-RUN pip install PyYAML
-RUN pip install Pyro4
-RUN pip install dill
-RUN pip install ipython
-RUN pip install openpyxl
-RUN pip install pymysql
-RUN pip install xlrd
+RUN pip install --no-cache-dir -U \
+    pip \
+    setuptools \
+    wheel \
+    virtualenv
+RUN pip install --no-cache-dir \
+    cffi \
+    numpy \
+    scipy \
+    matplotlib \
+    mpi4py \
+    cryptography \
+    sympy \
+    networkx \
+    PyYAML \
+    Pyro4 \
+    dill \
+    ipython \
+    openpyxl \
+    pymysql \
+    xlrd
