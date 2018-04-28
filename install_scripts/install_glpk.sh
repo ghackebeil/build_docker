@@ -9,7 +9,7 @@ RUN echo "" && \
 ARG PREFIX="/root"
 ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && \
-    rm -rf ${TARGET}.tar.gz
+    rm -rf ${TARGET}.tar.gz && \
     wget -q "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz" && \
     tar xf ${TARGET}.tar.gz && \
     rm -rf ${TARGET}.tar.gz
