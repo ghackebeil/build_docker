@@ -11,15 +11,15 @@ RUN echo "" && \
     echo "INSTALLING COMMON LIBS" && \
     echo "======================" && \
     echo ""
-RUN apt-get -q -y update
-RUN apt-get -q -y upgrade
-RUN apt-get -q -y install build-essential libssl-dev libffi-dev
-RUN apt-get -q -y install wget git subversion
-RUN apt-get -q -y install zip unzip
-RUN apt-get -q -y install gfortran
-RUN apt-get -q -y install libopenblas-dev
-RUN apt-get -q -y install openmpi-bin openmpi-common libopenmpi-dev
-RUN apt-get -q -y install enchant
+RUN apt-get -qq update
+RUN apt-get -qq upgrade
+RUN apt-get -qq install build-essential libssl-dev libffi-dev
+RUN apt-get -qq install wget git subversion
+RUN apt-get -qq install zip unzip
+RUN apt-get -qq install gfortran
+RUN apt-get -qq install libopenblas-dev
+RUN apt-get -qq install openmpi-bin openmpi-common libopenmpi-dev
+RUN apt-get -qq install enchant
 #
 # Install GAMS
 #
@@ -77,7 +77,7 @@ RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
 RUN cd ${PREFIX} && wget -q "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip
 RUN cd ${PREFIX} && unzip -q ${TARGET}.zip
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip
-RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL > /dev/null
+RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL 2> /dev/null
 RUN cd ${PREFIX}/${TARGET} && make > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 #
@@ -114,11 +114,11 @@ RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
 RUN cd ${PREFIX} && wget -q "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz"
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps 2> /dev/null
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
     ../configure CXX=g++ CC=gcc F77=gfortran > /dev/null && \
@@ -139,12 +139,12 @@ RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
 RUN cd ${PREFIX} && wget -q "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz"
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Glpk && ./get.Glpk > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis > /dev/null
-RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps > /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Blas && ./get.Blas 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Glpk && ./get.Glpk 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Lapack && ./get.Lapack 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Metis && ./get.Metis 2> /dev/null
+RUN cd ${PREFIX}/${TARGET}/ThirdParty/Mumps && ./get.Mumps 2> /dev/null
 RUN mkdir ${PREFIX}/${TARGET}/build
 RUN cd ${PREFIX}/${TARGET}/build  && \
     ../configure CXX=g++ CC=gcc F77=gfortran --disable-mysql > /dev/null && \
