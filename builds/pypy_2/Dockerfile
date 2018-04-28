@@ -16,6 +16,53 @@ RUN apt-get -y install libopenblas-dev
 RUN apt-get -y install openmpi-bin openmpi-common libopenmpi-dev
 RUN apt-get -y install enchant
 #
+# Install GAMS
+#
+ARG PREFIX="/root"
+ARG TARGET="linux_x64_64_sfx.exe"
+ARG VERSION="25.0.3"
+RUN mkdir ${PREFIX}/GAMS_${VERSION}
+RUN cd ${PREFIX}/GAMS_${VERSION} && \
+    wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
+    cd -
+RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
+RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -
+RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET} && cd -
+RUN echo ${GAMSDIR}
+ARG GAMSDIR="`ls ${PREFIX}/GAMS_${VERSION}`"
+ENV PATH="${GAMSDIR}:${PATH}"
+# TODO: Install GAMS Python API
+# python 2.6
+#cd ${GAMSDIR}/apifiles/Python/api_26 && python setup.py install && cd -
+# python 2.7
+#cd ${GAMSDIR}/apifiles/Python/api && python setup.py install && cd -
+# python 3.4 / 3.5
+#cd ${GAMSDIR}/apifiles/Python/api_34 && python setup.py install && cd -
+# python 3.6
+#cd ${GAMSDIR}/apifiles/Python/api_36 && python setup.py install && cd -
+#
+# Install Baron
+#
+ARG PREFIX="/root"
+ARG TARGET="baron-lin64"
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && wget "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip" && cd -
+RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
+ENV PATH="${PREFIX}/${TARGET}:${PATH}"
+#
+# Install gjh_asl_json
+#
+ARG PREFIX="/root"
+ARG TARGET="gjh_asl_json-master"
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && wget "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
+RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
+RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL && cd -
+RUN cd ${PREFIX}/${TARGET} && make && cd -
+ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
+#
 # Install Glpk
 #
 ARG PREFIX="/root"
@@ -71,53 +118,6 @@ RUN cd ${PREFIX}/${TARGET}/build  && \
     make -j4 && \
     make install && cd -
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
-#
-# Install Baron
-#
-ARG PREFIX="/root"
-ARG TARGET="baron-lin64"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && wget "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip" && cd -
-RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-ENV PATH="${PREFIX}/${TARGET}:${PATH}"
-#
-# Install GAMS
-#
-ARG PREFIX="/root"
-ARG TARGET="linux_x64_64_sfx.exe"
-ARG VERSION="25.0.3"
-RUN mkdir ${PREFIX}/GAMS_${VERSION}
-RUN cd ${PREFIX}/GAMS_${VERSION} && \
-    wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
-    cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET} && cd -
-RUN echo ${GAMSDIR}
-ARG GAMSDIR=`ls ${PREFIX}/GAMS_${VERSION}`
-ENV PATH="${GAMSDIR}:${PATH}"
-# TODO: Install GAMS Python API
-# python 2.6
-#cd ${GAMSDIR}/apifiles/Python/api_26 && python setup.py install && cd -
-# python 2.7
-#cd ${GAMSDIR}/apifiles/Python/api && python setup.py install && cd -
-# python 3.4 / 3.5
-#cd ${GAMSDIR}/apifiles/Python/api_34 && python setup.py install && cd -
-# python 3.6
-#cd ${GAMSDIR}/apifiles/Python/api_36 && python setup.py install && cd -
-#
-# Install gjh_asl_json
-#
-ARG PREFIX="/root"
-ARG TARGET="gjh_asl_json-master"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && wget "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
-RUN cd ${PREFIX}/${TARGET}/Thirdparty && ./get.ASL && cd -
-RUN cd ${PREFIX}/${TARGET} && make && cd -
-ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 #
 # Install common Python libraries
 #

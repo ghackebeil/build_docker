@@ -18,12 +18,12 @@ image_list = [('pypy:2','pypy','pypy_2'),
               ('continuumio/anaconda3','python','anaconda_3')]
 
 installs = ['docker_scripts/install_libs.sh',
+            'docker_scripts/install_gams.sh',
+            'docker_scripts/install_baron.sh',
+            'docker_scripts/install_gjh_asl_json.sh',
             'docker_scripts/install_glpk.sh',
             'docker_scripts/install_ipopt.sh',
             'docker_scripts/install_cbc.sh',
-            'docker_scripts/install_baron.sh',
-            'docker_scripts/install_gams.sh',
-            'docker_scripts/install_gjh_asl_json.sh',
             'docker_scripts/install_python_libs.sh']
 
 for image, python_exe, name in image_list:

@@ -12,7 +12,7 @@ RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET} && cd -
 RUN echo ${GAMSDIR}
-ARG GAMSDIR=`ls ${PREFIX}/GAMS_${VERSION}`
+ARG GAMSDIR="`ls ${PREFIX}/GAMS_${VERSION}`"
 ENV PATH="${GAMSDIR}:${PATH}"
 # TODO: Install GAMS Python API
 # python 2.6
