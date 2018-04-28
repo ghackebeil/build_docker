@@ -1,9 +1,9 @@
 import os
-
-outdir = 'builds'
+import argparse
+import tempfile
 
 base = \
-"""FROM {image}
+"""FROM {source_image}
 
 MAINTAINER Pyomo Developers
 
@@ -26,8 +26,8 @@ installs = ['docker_scripts/install_libs.sh',
             'docker_scripts/install_cbc.sh',
             'docker_scripts/install_python_libs.sh']
 
-for image, python_exe, name in image_list:
-    out = base.format(image=image)
+def create_dockerfile(source_image, python_exe, dirname):
+    out = base.format(source_image=source_image)
     if python_exe != 'python':
         out += ('RUN ln -s "$(which {python_exe})" '
                 '/usr/local/bin/python\n'.\
@@ -39,13 +39,28 @@ for image, python_exe, name in image_list:
     #else: pypy
     #    out += 'RUN pip install -U pandas'
     #    out += 'RUN pip install -U numba'
-    print(name)
-    dst = os.path.join(outdir,name)
-    if not os.path.exists(dst):
-        os.makedirs(dst)
-    with open(os.path.join(dst,'Dockerfile'),'w') as f:
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+    with open(os.path.join(dirname,'Dockerfile'),'w') as f:
         f.write(out)
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        'source_image',
+        help='The source image to start from')
+    parser.add_argument(
+        'python_exe',
+        help=('The name of the python executable '
+              'found in the source image'))
+    parser.add_argument(
+        'dirname',
+        help=('The name of the output directory '
+              'where the Dockerfile should be placed'))
+    args = parser.parse_args()
+    create_dockerfile(args.source_image,
+                      args.python_exe,
+                      args.dirname)
 """
 import yaml
 with open('.travis.yml') as f:
