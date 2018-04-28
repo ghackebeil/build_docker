@@ -4,7 +4,7 @@
 RUN PREFIX=/root
 RUN TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
-RUN cd ${PREFIX} && wget https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz && cd -
+RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX}/${TARGET}/ThirdParty/ASL && ./get.ASL && cd -

@@ -6,7 +6,7 @@ RUN VERSION="25.0.3"
 RUN TARGET="linux_x64_64_sfx.exe"
 RUN mkdir ${PREFIX}/GAMS_${VERSION}
 RUN cd ${PREFIX}/GAMS_${VERSION} && \
-    wget https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET} && \
+    wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
     cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -

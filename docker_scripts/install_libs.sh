@@ -1,7 +1,7 @@
 #
 # Install common Linux libraries
 #
-RUN cd . && apt-get -y update && cd -
+RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install build-essential libssl-dev libffi-dev
 RUN apt-get -y install wget git subversion
