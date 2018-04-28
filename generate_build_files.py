@@ -18,7 +18,6 @@ image_list = [('pypy:2','pypy','pypy_2'),
               ('continuumio/anaconda3','python','anaconda_3')]
 
 installs = ['docker_scripts/install_libs.sh',
-            'docker_scripts/install_cmake.sh',
             'docker_scripts/install_glpk.sh',
             'docker_scripts/install_ipopt.sh',
             'docker_scripts/install_cbc.sh',

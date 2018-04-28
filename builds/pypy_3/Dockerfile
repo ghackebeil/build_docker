@@ -6,7 +6,7 @@ RUN ln -s "$(which pypy3)" /usr/local/bin/python
 #
 # Install common Linux libraries
 #
-RUN apt-get -y update
+RUN cd . && apt-get -y update && cd -
 RUN apt-get -y upgrade
 RUN apt-get -y install build-essential libssl-dev libffi-dev
 RUN apt-get -y install wget git subversion
@@ -14,14 +14,6 @@ RUN apt-get -y install gfortran
 RUN apt-get -y install libopenblas-dev
 RUN apt-get -y install openmpi-bin openmpi-common libopenmpi-dev
 RUN apt-get -y install enchant
-RUN PREFIX=/root
-RUN TARGET="cmake-3.11.1-Linux-x86_64"
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && wget -q https://cmake.org/files/v3.11/${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && tar xfz ${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
-RUN cd ${PREFIX} && cp -r ${TARGET}/* / && cd -
-RUN cd ${PREFIX} && rm -r ${TARGET} && cd -
 #
 # Install Glpk
 #
