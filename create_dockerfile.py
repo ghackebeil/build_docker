@@ -25,6 +25,7 @@ installs = ['docker_scripts/install_libs.sh',
             'docker_scripts/install_ipopt.sh',
             'docker_scripts/install_cbc.sh',
             'docker_scripts/install_python_libs.sh']
+nopypy_installs = ['docker_scripts/install_python_libs_nopypy.sh']
 
 def create_dockerfile(source_image, python_exe, dirname):
     out = base.format(source_image=source_image)
@@ -35,10 +36,10 @@ def create_dockerfile(source_image, python_exe, dirname):
     for fname in installs:
         with open(fname) as f:
             out += f.read()
-    # TODO
-    #else: pypy
-    #    out += 'RUN pip install -U pandas'
-    #    out += 'RUN pip install -U numba'
+    if 'pypy' not in source_image:
+        for fname in nopypy_installs:
+            with open(fname) as f:
+                out += f.read()
     if not os.path.exists(dirname):
         os.makedirs(dirname)
     with open(os.path.join(dirname,'Dockerfile'),'w') as f:
