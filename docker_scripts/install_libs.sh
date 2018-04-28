@@ -15,3 +15,4 @@ RUN apt-get -qq install gfortran
 RUN apt-get -qq install libopenblas-dev
 RUN apt-get -qq install openmpi-bin openmpi-common libopenmpi-dev
 RUN apt-get -qq install enchant
+RUN apt-get -qq install unixodbc unixodbc-dev
