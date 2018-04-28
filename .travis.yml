@@ -21,7 +21,7 @@ script:
   - mkdir ${BUILD_DIR}
   - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
   - while sleep 9m; do echo "still running..."; done &
-  - docker build --no-cache --pull -t ${NAME} ${BUILD_DIR}/${NAME}
+  - docker build --compress --no-cache --pull -t ${NAME} ${BUILD_DIR}/${NAME}
   - kill %1
 after_success:
   - docker tag ${NAME} $DOCKERHUB_USER/${NAME}
