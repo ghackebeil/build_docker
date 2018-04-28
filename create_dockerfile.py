@@ -17,15 +17,15 @@ image_list = [('pypy:2','pypy','pypy_2'),
               ('continuumio/anaconda','python','anaconda_2'),
               ('continuumio/anaconda3','python','anaconda_3')]
 
-installs = ['docker_scripts/install_libs.sh',
-            'docker_scripts/install_gams.sh',
-            'docker_scripts/install_baron.sh',
-            'docker_scripts/install_gjh_asl_json.sh',
-            'docker_scripts/install_glpk.sh',
-            'docker_scripts/install_ipopt.sh',
-            'docker_scripts/install_cbc.sh',
-            'docker_scripts/install_python_libs.sh']
-nopypy_installs = ['docker_scripts/install_python_libs_nopypy.sh']
+installs = ['install_scripts/install_libs.sh',
+            'install_scripts/install_gams.sh',
+            'install_scripts/install_baron.sh',
+            'install_scripts/install_gjh_asl_json.sh',
+            'install_scripts/install_glpk.sh',
+            'install_scripts/install_ipopt.sh',
+            'install_scripts/install_cbc.sh',
+            'install_scripts/install_python_libs.sh']
+nopypy_installs = ['install_scripts/install_python_libs_nopypy.sh']
 
 def create_dockerfile(source_image, python_exe, dirname):
     out = base.format(source_image=source_image)
