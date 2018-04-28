@@ -10,12 +10,12 @@ ARG PREFIX="/root"
 ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"
 ARG GAMSDIR="gams25.0_linux_x64_64_sfx"
-RUN mkdir ${PREFIX}/GAMS_${VERSION}
-RUN cd ${PREFIX}/GAMS_${VERSION} && \
-    wget -q "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}"
-RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET}
-RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} > /dev/null
-RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET}
+RUN mkdir ${PREFIX}/GAMS_${VERSION} && \
+    cd ${PREFIX}/GAMS_${VERSION} && \
+    wget -q "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
+    chmod u+x ${TARGET} && \
+    ./${TARGET} > /dev/null && \
+    rm ${TARGET}
 ENV PATH="${PREFIX}/GAMS_${VERSION}/${GAMSDIR}:${PATH}"
 # TODO: Install GAMS Python API
 # python 2.6
