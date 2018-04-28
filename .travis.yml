@@ -19,7 +19,7 @@ env:
 script:
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
   - mkdir ${BUILD_DIR}
-  - python generate_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
+  - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
   - while sleep 9m; do echo "still running..."; done &
   - docker build --no-cache --pull -t ${NAME} ${BUILD_DIR}/${NAME}
   - kill %1
