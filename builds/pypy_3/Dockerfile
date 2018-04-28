@@ -17,12 +17,8 @@ RUN apt-get -y install enchant
 #
 # Install Glpk
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="glpk-4.65"
-RUN echo ${PREFIX}
-RUN echo ${TARGET}
+ARG PREFIX="/root"
+ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tar.gz && cd -
 RUN cd ${PREFIX} && wget "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tar.gz && cd -
@@ -36,10 +32,8 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Ipopt
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="Ipopt-3.12.9"
+ARG PREFIX="/root"
+ARG TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
@@ -58,10 +52,8 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install CBC
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="Cbc-2.9.9"
+ARG PREFIX="/root"
+ARG TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.tgz && cd -
 RUN cd ${PREFIX} && wget "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz" && cd -
 RUN cd ${PREFIX} && tar xf ${TARGET}.tgz && cd -
@@ -81,10 +73,8 @@ ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 #
 # Install Baron
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="baron-lin64"
+ARG PREFIX="/root"
+ARG TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && wget "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip" && cd -
 RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
@@ -93,13 +83,9 @@ ENV PATH="${PREFIX}/${TARGET}:${PATH}"
 #
 # Install GAMS
 #
-ARG PREFIX
-ARG TARGET
-ARG VERSION
-ARG GAMSDIR
-RUN PREFIX=/root
-RUN TARGET="linux_x64_64_sfx.exe"
-RUN VERSION="25.0.3"
+ARG PREFIX="/root"
+ARG TARGET="linux_x64_64_sfx.exe"
+ARG VERSION="25.0.3"
 RUN mkdir ${PREFIX}/GAMS_${VERSION}
 RUN cd ${PREFIX}/GAMS_${VERSION} && \
     wget "https://d37drm4t2jghv5.cloudfront.net/distributions/${VERSION}/linux/${TARGET}" && \
@@ -107,8 +93,8 @@ RUN cd ${PREFIX}/GAMS_${VERSION} && \
 RUN cd ${PREFIX}/GAMS_${VERSION} && chmod u+x ${TARGET} && cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && ./${TARGET} && cd -
 RUN cd ${PREFIX}/GAMS_${VERSION} && rm ${TARGET} && cd -
-RUN cd ${PREFIX}/GAMS_${VERSION} && GAMSDIR=`ls` && cd -
-RUN GAMSDIR=${PREFIX}/GAMS_${VERSION}/${GAMSDIR}
+RUN echo ${GAMSDIR}
+ARG GAMSDIR=`ls ${PREFIX}/GAMS_${VERSION}`
 ENV PATH="${GAMSDIR}:${PATH}"
 # TODO: Install GAMS Python API
 # python 2.6
@@ -122,10 +108,8 @@ ENV PATH="${GAMSDIR}:${PATH}"
 #
 # Install gjh_asl_json
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="gjh_asl_json-master"
+ARG PREFIX="/root"
+ARG TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && wget "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -

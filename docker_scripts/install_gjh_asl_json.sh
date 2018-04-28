@@ -1,10 +1,8 @@
 #
 # Install gjh_asl_json
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="gjh_asl_json-master"
+ARG PREFIX="/root"
+ARG TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && wget "https://codeload.github.com/ghackebeil/gjh_asl_json/zip/master" -O ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -

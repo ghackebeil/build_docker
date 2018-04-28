@@ -1,10 +1,8 @@
 #
 # Install Baron
 #
-ARG PREFIX
-ARG TARGET
-RUN PREFIX=/root
-RUN TARGET="baron-lin64"
+ARG PREFIX="/root"
+ARG TARGET="baron-lin64"
 RUN cd ${PREFIX} && rm -rf ${TARGET}.zip && cd -
 RUN cd ${PREFIX} && wget "https://www.minlp.com/downloads/xecs/baron/current/${TARGET}.zip" && cd -
 RUN cd ${PREFIX} && unzip ${TARGET}.zip && cd -
