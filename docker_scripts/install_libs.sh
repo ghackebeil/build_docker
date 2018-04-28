@@ -14,6 +14,6 @@ RUN apt-get -q update && \
         gfortran \
         libopenblas-dev \
         openmpi-bin openmpi-common libopenmpi-dev \
-        enchant
+        enchant \
         unixodbc unixodbc-dev && \
     rm -rf /var/lib/apt/lists/*
