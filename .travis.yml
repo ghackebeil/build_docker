@@ -1,0 +1,23 @@
+sudo: required
+cache: false
+language: python
+services:
+- docker
+env:
+  global:
+  - BUILD_DIR=builds
+  - secure: bbbb/AZkn1xxkIuJExMS7ERXglurEOzrIlwe/B8ZVAtF4rkQzS9/L02Wrpv+NDjKPlSivCg470e+EkJb8BYR2UOmHtVuk/jorUGj+p+t5eH381oveI8d+iisi5Q3u+QwBcPhIB3w3DcVjYBj/HT8QQaKqhdVTvLbnZR/1GaVi6+3MvODfuphQeKbyjlKozpfNoAmySj/frXExrzng/Y5Dci10ALpDLGtAA3Xk4oyAmJVOFujtZPXccZQkeaWx33dKkkulPRwtrL5+CGfObzgB0p5VBZecmQl8dI48W8qrYsk06VF0oChXMt6MTSXCtbhJy4tFkVG45uuAWjbeyGlwKaGRyTKEck5eHxU0CDzviy9r4vbgzRDzazKJZYym7m+38cG9OkN7f3Ua4MOxCksTbRkfmTxl5HmLA6S5nWGFy3gaZ++RBNtJ/shUN6s0TD9xFCloqJKnQsdhFrSQ7gsdtCigj0gfTU++84b2p6at66Tjptcuy2vx9ws3vxaiDMly2e3e4dIgK/3zUfg4V7kvNq8G3m8nT0acKYSs8sy6bObIGri6cCtzwXRu94+fhuENivRs1XYSxwXC1yG+lD2SlMTcvEzJJJCmhqPiF03h9NxXVARyrtZ1cVpGexcTBXf7sl4W1JAe83fJMbwmav6KmBIbD/U7IU/z6g/o+UGSec=
+  - secure: aA/pFr0rMXDd693hx4sOGzHy8TjmrQ4IqS2E3MqHNPnkwtq9PmBlPREOdsf8Al7wp+w6MwJW9xLG7TlJnaPfXDtJSQrY9nsaW/Gg0FnrBMOrQMUNVJevikDZ1JoZFtYWEiW4qr4cMsOP8TAPF0i/5rTFz7+8nWh9+hrDd7ZqafGfvNK84Eq9EW3c52D39F8hVKerKK9qMABks8ZIr2SWwfyIc4MS2LLxpG/8xugNwu8pBF714IJbUqzyCpozqaW+SN5+/SlQixjCEW/PT1RO62l7Th0eisThUke9ISW4wMWkQKmGtMHkdP3LbdKMjOy409Ij3OlvqyGyeIuzON7iluxEKorLe7j0qhYijusH5b/NB2GXkf3VoxxuMjdieKe1wDbmtG9kxaKg6HCGlYv4U6GdDzju03u5wjXm0W0cs1sxBqICADI6CaO6w12RELWcIeLKgHqI+VOkTqfiAHClAJJHL7KB/9JQTHBXcksjhiOsX952lPubvJHMYvSMowfzsq57eJvN2yTJ4pVwe9vRf74Sv+w0tRwTOyVVXFDShUFRMcb7/LeOcQkPuLovY5XhABBQ+NXqFoNA+e5K5LFTaGZSnhfeJHhvNlIqwc7JBspTUS7IQ3734IzLR75xBSi7+ouABf6ZYu3G1PrgE6q4IOROqRrOq0kLnevU5+nDcLc=
+  matrix:
+  - IMAGE_NAME=python_2.7
+  - IMAGE_NAME=python_3.5
+  - IMAGE_NAME=python_3.6
+  - IMAGE_NAME=pypy_2
+  - IMAGE_NAME=pypy_3
+  - IMAGE_NAME=anaconda_2
+  - IMAGE_NAME=anaconda_3
+script:
+  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
+  - docker build --no-cache --pull -t ${IMAGE_NAME} ${BUILD_DIR}/${IMAGE_NAME}
+  - docker tag ${IMAGE_NAME} $DOCKERHUB_USER/${IMAGE_NAME}
+  - docker push ${IMAGE_NAME} $DOCKERHUB_USER/${IMAGE_NAME}
