@@ -29,10 +29,9 @@ def create_dockerfile(source_image, python_exe, dirname):
     for fname in root_installs:
         with open(fname) as f:
             out += f.read()
-    out += "RUN groupadd -r user && useradd --no-log-init -r -g user user\n"
+    out += "RUN groupadd -r user && useradd --no-log-init -m -r -g user user\n"
     out += "USER user\n"
-    out += "RUN mkdir /user\n"
-    out += "ARG PREFIX=/user\n"
+    out += "ARG PREFIX=/home/user\n"
     for fname in installs:
         with open(fname) as f:
             out += f.read()
