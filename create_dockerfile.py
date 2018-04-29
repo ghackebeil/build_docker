@@ -10,14 +10,14 @@ CMD ["/bin/bash"]
 """
 
 root_installs = ['install_scripts/install_libs.sh']
-installs = ['install_scripts/install_gams.sh',
-            'install_scripts/install_baron.sh',
-            'install_scripts/install_gjh_asl_json.sh',
-            'install_scripts/install_glpk.sh',
-            'install_scripts/install_ipopt.sh',
-            'install_scripts/install_cbc.sh',
-            'install_scripts/install_python_libs.sh']
-nopypy_installs = ['install_scripts/install_python_libs_nopypy.sh']
+user_installs = ['install_scripts/install_gams.sh',
+                 'install_scripts/install_baron.sh',
+                 'install_scripts/install_gjh_asl_json.sh',
+                 'install_scripts/install_glpk.sh',
+                 'install_scripts/install_ipopt.sh',
+                 'install_scripts/install_cbc.sh']
+root_python_installs = ['install_scripts/install_python_libs.sh']
+root_python_nopypy_installs = ['install_scripts/install_python_libs_nopypy.sh']
 
 def create_dockerfile(source_image, python_exe, dirname):
     out = base.format(source_image=source_image)
@@ -32,13 +32,18 @@ def create_dockerfile(source_image, python_exe, dirname):
     out += "RUN groupadd -r user && useradd --no-log-init -m -r -g user user\n"
     out += "USER user\n"
     out += "ARG PREFIX=/home/user\n"
-    for fname in installs:
+    for fname in user_installs:
+        with open(fname) as f:
+            out += f.read()
+    out += "USER root\n"
+    for fname in root_python_installs:
         with open(fname) as f:
             out += f.read()
     if 'pypy' not in source_image:
-        for fname in nopypy_installs:
+        for fname in root_python_nopypy_installs:
             with open(fname) as f:
                 out += f.read()
+    out += "USER user\n"
     if not os.path.exists(dirname):
         os.makedirs(dirname)
     with open(os.path.join(dirname,'Dockerfile'),'w') as f:
