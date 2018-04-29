@@ -6,7 +6,8 @@ RUN echo "" && \
     echo "INSTALLING IPOPT" && \
     echo "================" && \
     echo ""
-ARG TARGET="Ipopt-3.12.9"
+ENV IPOPT_VERSION="3.12.9"
+ARG TARGET="Ipopt-${IPOPT_VERSION}"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \
     wget -q "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz" && \

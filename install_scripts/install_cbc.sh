@@ -6,7 +6,8 @@ RUN echo "" && \
     echo "INSTALLING CBC" && \
     echo "==============" && \
     echo ""
-ARG TARGET="Cbc-2.9.9"
+ENV CBC_VERSION="2.9.9"
+ARG TARGET="Cbc-${CBC_VERSION}"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \
     wget -q "https://www.coin-or.org/download/source/Cbc/${TARGET}.tgz" && \

@@ -6,7 +6,8 @@ RUN echo "" && \
     echo "INSTALLING GLPK" && \
     echo "===============" && \
     echo ""
-ARG TARGET="glpk-4.65"
+ENV GLPK_VERSION="4.65"
+ARG TARGET="glpk-${GLPK_VERSION}"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tar.gz && \
     wget -q "https://ftp.gnu.org/gnu/glpk/${TARGET}.tar.gz" && \

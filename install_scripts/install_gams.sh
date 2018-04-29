@@ -7,7 +7,7 @@ RUN echo "" && \
     echo "===============" && \
     echo ""
 ARG TARGET="linux_x64_64_sfx.exe"
-ARG GAMS_VERSION="25.0.3"
+ENV GAMS_VERSION="25.0.3"
 ARG GAMS_DIR="gams25.0_linux_x64_64_sfx"
 RUN mkdir ${PREFIX}/GAMS_${GAMS_VERSION} && \
     cd ${PREFIX}/GAMS_${GAMS_VERSION} && \
@@ -31,3 +31,31 @@ RUN mkdir ${PREFIX}/GAMS_${GAMS_VERSION} && \
     rm -r ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/VBnet
 ENV PATH="${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}:${PATH}"
 ARG TARGET
+#
+# Install GAMS Python API (but not on PyPy or CPython-3.5)
+#
+# python 2.6
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 6)" ] || \
+    (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api_26 && \
+     python setup.py install && \
+     python -c "import gams")
+# python 2.7
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 7)" ] || \
+    (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api && \
+     python setup.py install && \
+     python -c "import gams")
+# python 3.4
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 4)" ] || \
+    (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api_34 && \
+     python setup.py install && \
+     python -c "import gams")
+# python 3.6
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 6)" ] || \
+    (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api_36 && \
+     python setup.py install && \
+     python -c "import gams")
+ARG GAMS_DIR
