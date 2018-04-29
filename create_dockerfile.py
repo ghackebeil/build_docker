@@ -29,9 +29,10 @@ def create_dockerfile(source_image, python_exe, dirname):
     for fname in root_installs:
         with open(fname) as f:
             out += f.read()
-    out += "RUN groupadd -r pyomo && useradd --no-log-init -r -g pyomo pyomo\n"
-    out += "USER pyomo\n"
-    out += "ARG PREFIX=/pyomo\n"
+    out += "RUN groupadd -r user && useradd --no-log-init -r -g user user\n"
+    out += "USER user\n"
+    out += "RUN mkdir /user\n"
+    out += "ARG PREFIX=/user\n"
     for fname in installs:
         with open(fname) as f:
             out += f.read()
