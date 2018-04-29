@@ -17,11 +17,11 @@ ARG TARGET
 # dummy baron input file
 RUN echo 'OPTIONS {\n\
 results: 1;\n\
-ResName: \"dummy.res\";\n\
+ResName: "dummy.res";\n\
 summary: 1;\n\
-SumName: \"dummy.sum\";\n\
+SumName: "dummy.sum";\n\
 times: 1;\n\
-TimName: \"dummy.tim\";\n\
+TimName: "dummy.tim";\n\
 }\n\
 POSITIVE_VARIABLES x1;\n\
 OBJ: minimize x1;\n' > dummy.bar
