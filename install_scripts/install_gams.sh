@@ -46,7 +46,7 @@ RUN python -c "import __pypy__" 2> /dev/null || \
     (cd ${PREFIX}/GAMS_${VERSION}/${GAMSDIR}/apifiles/Python/api_34 && python setup.py install)
 # python 3.5 (uses same install directory as 3.4)
 RUN python -c "import __pypy__" 2> /dev/null || \
-    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 4)" ] || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 5)" ] || \
     (cd GAMS_25.0.3/gams25.0_linux_x64_64_sfx/apifiles/Python/api_34 && python setup.py install)
 # python 3.6
 RUN python -c "import __pypy__" 2> /dev/null || \
