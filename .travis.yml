@@ -22,7 +22,6 @@ script:
   - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
   - while sleep 9m; do echo "still running..."; done &
   - docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
-  - kill %1
-after_success:
   - docker tag test-builds:${NAME} $DOCKERHUB_USER/test-builds:${NAME}
-  - docker push $DOCKERHUB_USER/test-builds:${NAME}
+  - travis_retry docker push $DOCKERHUB_USER/test-builds:${NAME}
+  - kill %1
