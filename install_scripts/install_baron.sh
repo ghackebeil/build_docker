@@ -6,7 +6,7 @@ RUN echo "" && \
     echo "INSTALLING BARON" && \
     echo "================" && \
     echo ""
-ARG PREFIX="/root"
+ARG PREFIX
 ARG TARGET="baron-lin64"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.zip && \

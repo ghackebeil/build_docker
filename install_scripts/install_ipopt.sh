@@ -6,7 +6,7 @@ RUN echo "" && \
     echo "INSTALLING IPOPT" && \
     echo "================" && \
     echo ""
-ARG PREFIX="/root"
+ARG PREFIX
 ARG TARGET="Ipopt-3.12.9"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \

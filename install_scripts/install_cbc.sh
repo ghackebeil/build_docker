@@ -6,7 +6,7 @@ RUN echo "" && \
     echo "INSTALLING CBC" && \
     echo "==============" && \
     echo ""
-ARG PREFIX="/root"
+ARG PREFIX
 ARG TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \

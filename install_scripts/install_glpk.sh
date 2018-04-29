@@ -6,7 +6,7 @@ RUN echo "" && \
     echo "INSTALLING GLPK" && \
     echo "===============" && \
     echo ""
-ARG PREFIX="/root"
+ARG PREFIX
 ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tar.gz && \

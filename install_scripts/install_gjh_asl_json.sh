@@ -6,7 +6,7 @@ RUN echo "" && \
     echo "INSTALLING GJH_ASL_JSON" && \
     echo "=======================" && \
     echo ""
-ARG PREFIX="/root"
+ARG PREFIX
 ARG TARGET="gjh_asl_json-master"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.zip && \

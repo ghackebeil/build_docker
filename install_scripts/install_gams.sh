@@ -6,7 +6,7 @@ RUN echo "" && \
     echo "INSTALLING GAMS" && \
     echo "===============" && \
     echo ""
-ARG PREFIX="/root"
+ARG PREFIX
 ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"
 ARG GAMSDIR="gams25.0_linux_x64_64_sfx"

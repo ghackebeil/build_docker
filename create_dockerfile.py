@@ -3,13 +3,14 @@ import argparse
 
 base = \
 """FROM {source_image}
+CMD ["/bin/bash"]
 
 MAINTAINER Pyomo Developers
 
 """
 
-installs = ['install_scripts/install_libs.sh',
-            'install_scripts/install_gams.sh',
+root_installs = ['install_scripts/install_libs.sh']
+installs = ['install_scripts/install_gams.sh',
             'install_scripts/install_baron.sh',
             'install_scripts/install_gjh_asl_json.sh',
             'install_scripts/install_glpk.sh',
@@ -24,6 +25,13 @@ def create_dockerfile(source_image, python_exe, dirname):
         out += ('RUN ln -s "$(which {python_exe})" '
                 '/usr/local/bin/python\n'.\
                 format(python_exe=python_exe))
+
+    for fname in root_installs:
+        with open(fname) as f:
+            out += f.read()
+    out += "RUN groupadd -r pyomo && useradd --no-log-init -r -g pyomo pyomo\n"
+    out += "USER pyomo\n"
+    out += "ARG PREFIX=/pyomo\n"
     for fname in installs:
         with open(fname) as f:
             out += f.read()
