@@ -6,7 +6,6 @@ RUN echo "" && \
     echo "INSTALLING CBC" && \
     echo "==============" && \
     echo ""
-ARG PREFIX
 ARG TARGET="Cbc-2.9.9"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \
@@ -25,3 +24,4 @@ RUN mkdir ${PREFIX}/${TARGET}/build && \
     make -j4 > /dev/null && \
     make install > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
+ARG TARGET

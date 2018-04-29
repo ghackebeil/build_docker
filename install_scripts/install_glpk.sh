@@ -6,7 +6,6 @@ RUN echo "" && \
     echo "INSTALLING GLPK" && \
     echo "===============" && \
     echo ""
-ARG PREFIX
 ARG TARGET="glpk-4.65"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tar.gz && \
@@ -19,3 +18,4 @@ RUN mkdir ${PREFIX}/${TARGET}/build && \
     make -j4 > /dev/null && \
     make install > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
+ARG TARGET

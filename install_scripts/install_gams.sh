@@ -6,7 +6,6 @@ RUN echo "" && \
     echo "INSTALLING GAMS" && \
     echo "===============" && \
     echo ""
-ARG PREFIX
 ARG TARGET="linux_x64_64_sfx.exe"
 ARG VERSION="25.0.3"
 ARG GAMSDIR="gams25.0_linux_x64_64_sfx"
@@ -56,3 +55,6 @@ RUN python -c "import __pypy__" 2> /dev/null || \
     (cd ${PREFIX}/GAMS_${VERSION}/${GAMSDIR}/apifiles/Python/api_36 && \
      python setup.py install && \
      python -c "import gams")
+ARG TARGET
+ARG VERSION
+ARG GAMSDIR
