@@ -38,24 +38,24 @@ ARG TARGET
 RUN python -c "import __pypy__" 2> /dev/null || \
     [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 6)" ] || \
     (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api_26 && \
-     python setup.py install && \
+     python setup.py install > /dev/null && \
      python -c "import gams")
 # python 2.7
 RUN python -c "import __pypy__" 2> /dev/null || \
     [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 7)" ] || \
     (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api && \
-     python setup.py install && \
+     python setup.py install > /dev/null && \
      python -c "import gams")
 # python 3.4
 RUN python -c "import __pypy__" 2> /dev/null || \
     [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 4)" ] || \
     (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api_34 && \
-     python setup.py install && \
+     python setup.py install > /dev/null && \
      python -c "import gams")
 # python 3.6
 RUN python -c "import __pypy__" 2> /dev/null || \
     [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 6)" ] || \
     (cd ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Python/api_36 && \
-     python setup.py install && \
+     python setup.py install > /dev/null && \
      python -c "import gams")
 ARG GAMS_DIR
