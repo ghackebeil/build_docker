@@ -14,6 +14,6 @@ RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.zip && \
     cd ${TARGET}/Thirdparty && ./get.ASL 2> /dev/null && \
     cd .. && \
-    make -j$(nprocs) > /dev/null
+    make -j$(nproc) > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 ARG TARGET
