@@ -13,7 +13,7 @@ RUN cd ${PREFIX} && \
     wget -q "https://www.coin-or.org/download/source/Ipopt/${TARGET}.tgz" && \
     tar xf ${TARGET}.tgz && \
     rm -rf ${TARGET}.tgz && \
-    cd ${PREFIX}/${TARGET}/ThirdParty
+    cd ${PREFIX}/${TARGET}/ThirdParty && \
     cd ASL && ./get.ASL 2> /dev/null && cd .. && \
     cd Blas && ./get.Blas 2> /dev/null && cd .. && \
     cd Lapack && ./get.Lapack 2> /dev/null && cd .. && \
