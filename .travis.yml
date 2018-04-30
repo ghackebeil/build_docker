@@ -29,12 +29,11 @@ script:
   - ID=`docker ps -l -q`
   - docker cp ${ID}:/root/dynamic_vars.out .
   - docker run test-builds:${NAME} rm /root/dynamic_vars.out
-  - while read p
-    do
-      echo $p
-      docker run test-builds:${NAME} /bin/sh -c "sleep 0.1"
-      ID=`docker ps -l -q`
-      docker commit --change "ENV ${p}" ${ID} test-builds:${NAME}
+  - while read p; do \
+      echo $p; \
+      docker run test-builds:${NAME} /bin/sh -c "sleep 0.1"; \
+      ID=`docker ps -l -q`; \
+      docker commit --change "ENV ${p}" ${ID} test-builds:${NAME}; \
     done < dynamic_vars.out
   - rm dynamic_vars.out
   - docker tag test-builds:${NAME} $DOCKERHUB_USER/test-builds:${NAME}
