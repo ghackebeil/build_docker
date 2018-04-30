@@ -22,8 +22,15 @@ script:
   - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
   - while sleep 9m; do echo "still running..."; done &
   - docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
-  - docker run -v $(pwd):/host_mnt test-builds:${NAME} cp /root/dynamic_vars.out /host_mnt/
-  - cat dynamic_vars.out
+  # extract the list of dynamic environment variables we
+  # should commit to the containers environment (these var
+  # variables whose value needed to be determined at runtime)
+  - export ID=$(docker run test-builds:${NAME} /bin/sh -c "sleep 1")
+#  - docker run -v $(pwd):/host_mnt test-builds:${NAME} cp /root/dynamic_vars.out /host_mnt/
+  - docker cp ${ID}:/root/dynamic_vars.out .
+  - while read p; \
+       do echo $p; \
+     done < dynamic_vars.out
 #  - docker tag test-builds:${NAME} $DOCKERHUB_USER/test-builds:${NAME}
 #  - travis_retry docker push $DOCKERHUB_USER/test-builds:${NAME}
   - kill %1
