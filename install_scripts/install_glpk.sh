@@ -16,7 +16,7 @@ RUN cd ${PREFIX} && \
 RUN mkdir ${PREFIX}/${TARGET}/build && \
     cd ${PREFIX}/${TARGET}/build && \
     ../configure CXX=g++ CC=gcc F77=gfortran --prefix=${PREFIX}/${TARGET}/build > /dev/null && \
-    make -j4 > /dev/null && \
+    make -j$(nproc) > /dev/null && \
     make install > /dev/null
 ENV PATH="${PREFIX}/${TARGET}/build/bin:${PATH}"
 ARG TARGET
