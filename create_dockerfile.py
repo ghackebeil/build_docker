@@ -12,7 +12,7 @@ CMD ["/bin/bash"]
 
 installs = ['install_scripts/install_libs.sh',
             'install_scripts/install_gams.sh',
-            'install_scripts/install_baron.sh']
+            'install_scripts/install_baron.sh',
             'install_scripts/install_gjh_asl_json.sh',
             'install_scripts/install_glpk.sh',
             'install_scripts/install_ipopt.sh',
