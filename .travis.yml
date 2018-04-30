@@ -1,4 +1,3 @@
-sudo: required
 cache: false
 language: python
 services:
