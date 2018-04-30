@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -U \
       setuptools && \
     pip install --no-cache-dir \
       wheel \
-      virtualenv
+      virtualenv \
       cffi \
       numpy \
       scipy \
