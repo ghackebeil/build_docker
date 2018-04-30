@@ -7,23 +7,23 @@ RUN echo "" && \
     echo "======================" && \
     echo ""
 RUN pip install --no-cache-dir -U \
-    pip \
-    setuptools \
-    wheel \
-    virtualenv
-RUN pip install --no-cache-dir \
-    cffi \
-    numpy \
-    scipy \
-    matplotlib \
-    mpi4py \
-    cryptography \
-    sympy \
-    networkx \
-    PyYAML \
-    Pyro4 \
-    dill \
-    ipython \
-    openpyxl \
-    pymysql \
-    xlrd
+      pip \
+      setuptools && \
+    pip install --no-cache-dir \
+      wheel \
+      virtualenv
+      cffi \
+      numpy \
+      scipy \
+      matplotlib \
+      mpi4py \
+      cryptography \
+      sympy \
+      networkx \
+      PyYAML \
+      Pyro4 \
+      dill \
+      ipython \
+      openpyxl \
+      pymysql \
+      xlrd
