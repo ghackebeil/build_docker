@@ -25,12 +25,18 @@ script:
   # extract the list of dynamic environment variables we
   # should commit to the containers environment (these var
   # variables whose value needed to be determined at runtime)
-  - export ID=$(docker run test-builds:${NAME} /bin/sh -c "sleep 1")
-#  - docker run -v $(pwd):/host_mnt test-builds:${NAME} cp /root/dynamic_vars.out /host_mnt/
+  - docker run test-builds:${NAME} /bin/sh -c "sleep 0.1"
+  - ID=`docker ps -l -q`
   - docker cp ${ID}:/root/dynamic_vars.out .
-  - while read p; \
-       do echo $p; \
-     done < dynamic_vars.out
-#  - docker tag test-builds:${NAME} $DOCKERHUB_USER/test-builds:${NAME}
-#  - travis_retry docker push $DOCKERHUB_USER/test-builds:${NAME}
+  - docker run test-builds:${NAME} rm /root/dynamic_vars.out
+  - while read p
+    do
+      echo $p
+      docker run test-builds:${NAME} /bin/sh -c "sleep 0.1"
+      ID=`docker ps -l -q`
+      docker commit --change "ENV ${p}" ${ID} test-builds:${NAME}
+    done < dynamic_vars.out
+  - rm dynamic_vars.out
+  - docker tag test-builds:${NAME} $DOCKERHUB_USER/test-builds:${NAME}
+  - travis_retry docker push $DOCKERHUB_USER/test-builds:${NAME}
   - kill %1
