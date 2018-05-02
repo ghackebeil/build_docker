@@ -15,7 +15,7 @@ RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \
     cd ${PREFIX}/${TARGET}/ThirdParty && \
     cd ASL && ./get.ASL 2> /dev/null && cd .. && \
-    cd HSL && mv ${PREFIX}/coinhsl.tar . && tar xv coinhsl.tar && cd .. && \
+    cd HSL && mv ${PREFIX}/coinhsl.tar . && tar xf coinhsl.tar && cd .. && \
     cd Blas && ./get.Blas 2> /dev/null && cd .. && \
     cd Lapack && ./get.Lapack 2> /dev/null && cd .. && \
     cd Metis && ./get.Metis 2> /dev/null && cd .. && \
