@@ -22,10 +22,14 @@ RUN pip install --no-cache-dir -U \
       cryptography \
       sympy \
       networkx \
-      PyYAML \
       Pyro4 \
       dill \
       ipython \
       openpyxl \
       pymysql \
       xlrd
+# These may fail on PyPy / Python 3.7-rc
+RUN pip install --no-cache-dir PyYAML || echo failed to install PyYAML
+RUN pip install --no-cache-dir numba || echo failed to install numba
+RUN pip install --no-cache-dir pandas || echo failed to install pandas
+RUN pip install --no-cache-dir pyodbc || echo failed to install pyodbc
