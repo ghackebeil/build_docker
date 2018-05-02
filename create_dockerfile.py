@@ -7,7 +7,7 @@ base = \
 """FROM {source_image}
 CMD ["/bin/bash"]
 
-COPY cplex_studio128.linux-x86-64.bin /root/
+COPY encrypted/cplex_studio128.linux-x86-64.bin /root/
 """
 
 installs = ['install_scripts/libs.sh']

@@ -22,7 +22,7 @@ script:
   - mkdir ${BUILD_DIR}
   - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
   - echo "$CPLEX_INSTALLER_PASSPHRASE" | gpg --passphrase-fd 0 encrypted/cplex_studio128.linux-x86-64.bin.gz.gpg
-  - gunzip cplex_studio128.linux-x86-64.bin.gz
+  - gunzip encrypted/cplex_studio128.linux-x86-64.bin.gz
   - while sleep 9m; do echo "still running..."; done &
   - docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
   - docker run test-builds:${NAME} /bin/sh -c "sleep 0"
