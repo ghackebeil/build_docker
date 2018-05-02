@@ -21,6 +21,8 @@ script:
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
   - mkdir ${BUILD_DIR}
   - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
+  - cat encrypted/cplex_studio128.linux-x86-64.bin.gz.gpg
+  - git lfs -h
   - echo "$CPLEX_INSTALLER_PASSPHRASE" | gpg encrypted/cplex_studio128.linux-x86-64.bin.gz.gpg
   - gunzip cplex_studio128.linux-x86-64.bin.gz
   - while sleep 9m; do echo "still running..."; done &
