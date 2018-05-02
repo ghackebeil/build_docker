@@ -10,7 +10,8 @@ CMD ["/bin/bash"]
 COPY cplex_studio128.linux-x86-64.bin /root/
 """
 
-installs = ['install_scripts/libs.sh']
+installs = ['install_scripts/libs.sh',
+            'install_scripts/cplex.sh']
 #            'install_scripts/gams.sh',
 #            'install_scripts/baron.sh',
 #            'install_scripts/gjh_asl_json.sh',
@@ -34,6 +35,7 @@ def create_dockerfile(source_image, python_exe, dirname):
     # determined at runtime (they will be added after the
     # initial build)
     out += ("ARG DYNAMIC_VARS_FILE="+dynamic_vars_filename+"\n")
+    out += ("RUN touch "+dynamic_vars_filename+"\n")
     for fname in installs:
         with open(fname) as f:
             out += f.read()
