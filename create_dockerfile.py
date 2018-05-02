@@ -11,14 +11,14 @@ COPY cplex_studio128.linux-x86-64.bin /root/
 """
 
 installs = ['install_scripts/libs.sh',
-            'install_scripts/cplex.sh']
-#            'install_scripts/gams.sh',
-#            'install_scripts/baron.sh',
-#            'install_scripts/gjh_asl_json.sh',
-#            'install_scripts/glpk.sh',
-#            'install_scripts/ipopt.sh',
-#            'install_scripts/cbc.sh']
-python_installs = [] #'install_scripts/python_libs.sh']
+            'install_scripts/cplex.sh'
+            'install_scripts/gams.sh',
+            'install_scripts/baron.sh',
+            'install_scripts/gjh_asl_json.sh',
+            'install_scripts/glpk.sh',
+            'install_scripts/ipopt.sh',
+            'install_scripts/cbc.sh']
+python_installs = ['install_scripts/python_libs.sh']
 dynamic_vars_filename = '/root/dynamic_vars.out'
 
 def create_dockerfile(source_image, python_exe, dirname):
