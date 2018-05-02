@@ -19,7 +19,7 @@ USER_INSTALL_DIR=${PREFIX}/${TARGET}\n\
 -fileOverwrite_${PREFIX}/${TARGET}/Uninstall/Uninstall.lax=Yes\n' > installer.properties && \
     chmod u+x ./${INSTALLER} && \
     ./${INSTALLER} && \
-    rm ./${INSTALLER}
+    rm ./${INSTALLER} && \
     rm ./installer.properties && \
 ENV PATH="${PREFIX}/${TARGET}/cplex/bin/x86-64_linux:${PATH}"
 ARG TARGET
