@@ -20,7 +20,7 @@ USER_INSTALL_DIR=${PREFIX}/${TARGET}\n\
     chmod u+x ./${INSTALLER} && \
     ./${INSTALLER} && \
     rm ./${INSTALLER} && \
-    rm ./installer.properties && \
+    rm ./installer.properties
 ENV PATH="${PREFIX}/${TARGET}/cplex/bin/x86-64_linux:${PATH}"
 ARG TARGET
 ARG INSTALLER
