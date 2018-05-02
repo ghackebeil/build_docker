@@ -8,6 +8,7 @@ base = \
 CMD ["/bin/bash"]
 
 COPY cplex_studio128.linux-x86-64.bin /root/
+COPY coinhsl.tar /root/
 """
 
 installs = ['install_scripts/libs.sh',
