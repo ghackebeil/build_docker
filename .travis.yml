@@ -8,14 +8,14 @@ env:
   - secure: "Ri7AXEMu7+B0zV1ptFWwtRZY+6y2w8MUneV+AnAi1qInaaX4FLkA+F1QNpj0vN/r7S8rd+tvkL84HIREDT8GOcQeWfbm/r4I9M1CCIyclRBABZn82W8pJueSDOljxDBUA728L7pL0dDceoTXFHPUELp0b7qbsuVo+RDXxbUg8uUlH3wtBB19fOco8TOGSJulc9JkEbLLH+IPlBv/XKJ+evuLtvrsVZPQnfUQKQ7298Fqyg3OlmmaN8uhpUcgfpsWglrWYZiNd/r8Q5UXiqfI7Y19nudRH1giWVLmhwY9WK1LgtTTx9Pa8ca9racnwefcSWJYEalxyy/9yXhDi3u0abt3OeaQk4eSSiuC6+1GQuW5Mz6+wy26bZ81FUOfVVARs0Ld1zsr9R3NxgdtaAWaPCC7WubD+NT5sWeuB4jlr7Tw0rJMZ4YO32y8KTlqdq2Hwnlf+9IVvlBg8FXoovH2nWa+qrdAtPI3dIUkTRKPdzu8B6m/mcnKAzGsUwQtitfBdL6NUYJYQXZS3ss7A7QlEtdOknQ+EeVjHTJeFtE8VPgYbplElM9NL09wz1Pr2xJiSssKIUyvGuJNX6RHKwNn5VxBKuJmlpH1GVb7/+hgLm0FoU72z8EQdpZL1atU664Ll99iM02wsr/rwe+ZfEA6Lxqh1tTzdQeeuJ7d+MISHjA="
   - secure: "NQS4rkF09MbSFCN/No7LBlSzFJNemxojKXUUQ6F86cJrv/AUqFhsj+BW43zO1EVNwXArx9P70OEOGvtM7jakTif0DSQdhbn3SVUMhMaTytmSZfg5J07SDWA4OV1Ttr0wQN0MoTzoCFs4C8/6NKuxDLuyfhnBrk8N1JhFKqQhaf04qd9js+boB2QlVxHjGJCf0+nCz3fDUMXFQWZSpXMTlXzw0ESzNTtTtjtaeK/AjP8dcMQ8BkTNd3Pn1jV80GLrOLYaLpNOHSp+d21mRm2x+xZoS8XPWQSgxS9Qp9GU/e5flJi3N8ho/2awhKxnBaenf6p5rULtLDtv/vNpAQIvKrSL/l7i4r06f/V00Kf/saTn5LiPbsqpi3i0CYWH6tz+nBww5U2wgZWyrw0PPR54JhOAegKQtfwj1LeOCOILhWOANYKUcQfgU2D2KuqamV2M6FCfporx5l/6QKxFWlqUpf3wF60XAKbhOh8vOl1+FRkb9MT8u56V5H57rahfIJu8A7s0zyybulLYgNmB9/GhkY8g+ujumJXRNCgFR37CA9+0GJ28+cIVK59IwkaoV6pgKZC+74ILV9t+POU7zmwvWRvmecqjenRc7AFNjjp1ooQ1wHmUpkFJKahEqzu2lk8hjsuw2jgUfrvcZtQIDNqKCChRO4wORCCfJ7Cv+yD5aSE="
   matrix:
-  - NAME=python_3.6 SRC_IMAGE=python:3.7-rc-stretch SRC_PYTHON_EXE=python
-  - NAME=python_3.6 SRC_IMAGE=python:3.6-stretch    SRC_PYTHON_EXE=python
-  - NAME=python_3.5 SRC_IMAGE=python:3.5            SRC_PYTHON_EXE=python
-  - NAME=python_2.7 SRC_IMAGE=python:2.7-stretch    SRC_PYTHON_EXE=python
-  - NAME=pypy_3     SRC_IMAGE=pypy:3                SRC_PYTHON_EXE=pypy3
-  - NAME=pypy_2     SRC_IMAGE=pypy:2                SRC_PYTHON_EXE=pypy
-  - NAME=anaconda_3 SRC_IMAGE=continuumio/anaconda3 SRC_PYTHON_EXE=python
-  - NAME=anaconda_2 SRC_IMAGE=continuumio/anaconda  SRC_PYTHON_EXE=python
+  - NAME=python_3.7-rc SRC_IMAGE=python:3.7-rc-stretch SRC_PYTHON_EXE=python
+  - NAME=python_3.6    SRC_IMAGE=python:3.6-stretch    SRC_PYTHON_EXE=python
+  - NAME=python_3.5    SRC_IMAGE=python:3.5            SRC_PYTHON_EXE=python
+  - NAME=python_2.7    SRC_IMAGE=python:2.7-stretch    SRC_PYTHON_EXE=python
+  - NAME=pypy_3        SRC_IMAGE=pypy:3                SRC_PYTHON_EXE=pypy3
+  - NAME=pypy_2        SRC_IMAGE=pypy:2                SRC_PYTHON_EXE=pypy
+  - NAME=anaconda_3    SRC_IMAGE=continuumio/anaconda3 SRC_PYTHON_EXE=python
+  - NAME=anaconda_2    SRC_IMAGE=continuumio/anaconda  SRC_PYTHON_EXE=python
 script:
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
   - mkdir ${BUILD_DIR}
