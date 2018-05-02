@@ -10,7 +10,7 @@ env:
   matrix:
   - NAME=python_3.6 SRC_IMAGE=python:3.7-rc-stretch SRC_PYTHON_EXE=python
   - NAME=python_3.6 SRC_IMAGE=python:3.6-stretch    SRC_PYTHON_EXE=python
-  - NAME=python_3.5 SRC_IMAGE=python:3.5-stretch    SRC_PYTHON_EXE=python
+  - NAME=python_3.5 SRC_IMAGE=python:3.5            SRC_PYTHON_EXE=python
   - NAME=python_2.7 SRC_IMAGE=python:2.7-stretch    SRC_PYTHON_EXE=python
   - NAME=pypy_3     SRC_IMAGE=pypy:3                SRC_PYTHON_EXE=pypy3
   - NAME=pypy_2     SRC_IMAGE=pypy:2                SRC_PYTHON_EXE=pypy
