@@ -10,15 +10,15 @@ CMD ["/bin/bash"]
 """
 
 
-installs = ['install_scripts/install_libs.sh',
-            'install_scripts/install_gams.sh',
-            'install_scripts/install_baron.sh',
-            'install_scripts/install_gjh_asl_json.sh',
-            'install_scripts/install_glpk.sh',
-            'install_scripts/install_ipopt.sh',
-            'install_scripts/install_cbc.sh']
-python_installs = ['install_scripts/install_python_libs.sh']
-python_nopypy_installs = ['install_scripts/install_python_libs_nopypy.sh']
+installs = ['install_scripts/libs.sh',
+            'install_scripts/gams.sh',
+            'install_scripts/baron.sh',
+            'install_scripts/gjh_asl_json.sh',
+            'install_scripts/glpk.sh',
+            'install_scripts/ipopt.sh',
+            'install_scripts/cbc.sh']
+python_installs = ['install_scripts/python_libs.sh']
+python_nopypy_installs = ['install_scripts/python_libs_nopypy.sh']
 dynamic_vars_filename = '/root/dynamic_vars.out'
 
 def create_dockerfile(source_image, python_exe, dirname):
