@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -U \
       setuptools && \
     pip install --no-cache-dir \
       sphinx \
-      sphinx_rtd_theme
+      sphinx_rtd_theme \
       wheel \
       virtualenv \
       cffi \
