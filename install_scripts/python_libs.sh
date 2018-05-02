@@ -10,6 +10,8 @@ RUN pip install --no-cache-dir -U \
       pip \
       setuptools && \
     pip install --no-cache-dir \
+      sphinx \
+      sphinx_rtd_theme
       wheel \
       virtualenv \
       cffi \
