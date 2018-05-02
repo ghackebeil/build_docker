@@ -23,11 +23,11 @@ script:
 - mkdir ${BUILD_DIR}
 - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
 # get cplex installer
-- echo "$RD_PASSWORD" | scp ${RD_USERNAME}@141.212.164.88:travis_files/cplex_studio128.linux-x86-64.bin.gz .
+- echo "$RD_PASSWORD" | scp -q -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${RD_USERNAME}@141.212.164.88:travis_files/cplex_studio128.linux-x86-64.bin.gz .
 - gunzip cplex_studio128.linux-x86-64.bin.gz
 - mv cplex_studio128.linux-x86-64.bin ${BUILD_DIR}/${NAME}/
 # get coinhsl lib
-- echo "$RD_PASSWORD" | scp ${RD_USERNAME}@141.212.164.88:travis_files/coinhsl.tar.gz .
+- echo "$RD_PASSWORD" | scp -q -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${RD_USERNAME}@141.212.164.88:travis_files/coinhsl.tar.gz .
 - gunzip coinhsl.tar.gz
 - mv coinhsl.tar ${BUILD_DIR}/${NAME}/
 # start the build
