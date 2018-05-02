@@ -19,7 +19,7 @@ env:
   - NAME=anaconda_3    SRC_IMAGE=continuumio/anaconda3 SRC_PYTHON_EXE=python
   - NAME=anaconda_2    SRC_IMAGE=continuumio/anaconda  SRC_PYTHON_EXE=python
 install:
-- apt-get install sshpass
+- apt-get install -y sshpass
 script:
 - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
 - mkdir ${BUILD_DIR}
