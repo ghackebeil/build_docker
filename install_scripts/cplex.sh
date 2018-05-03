@@ -26,18 +26,24 @@ RUN cd ${PREFIX} && \
     rm -r ${TARGET}/cpoptimizer && \
     rm -r ${TARGET}/cplex/matlab && \
     rm -r ${TARGET}/cplex/examples
+#
+# Install GAMS Python API (but not on PyPy)
+#
 # python 2.7
-RUN [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 7)" ] || \
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 7)" ] || \
     (cd ${PREFIX}/${TARGET}/cplex/python/2.7/x86-64_linux && \
      python setup.py install > /dev/null && \
      python -c "import cplex")
 # python 3.5
-RUN [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 5)" ] || \
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 5)" ] || \
     (cd ${PREFIX}/${TARGET}/cplex/python/3.5/x86-64_linux && \
      python setup.py install > /dev/null && \
      python -c "import cplex")
 # python 3.6
-RUN [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 6)" ] || \
+RUN python -c "import __pypy__" 2> /dev/null || \
+    [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(3, 6)" ] || \
     (cd ${PREFIX}/${TARGET}/cplex/python/3.6/x86-64_linux && \
      python setup.py install > /dev/null && \
      python -c "import cplex")
