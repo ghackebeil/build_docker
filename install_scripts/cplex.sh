@@ -21,7 +21,7 @@ RUN cd ${PREFIX} && \
     ./${INSTALLER} && \
     rm ./${INSTALLER} && \
     rm ./installer.properties && \
-    rm ${TARGET}/ops && \
+    rm ${TARGET}/opl && \
     rm ${TARGET}/doc && \
     rm ${TARGET}/cpoptimizer
 # python 2.7
