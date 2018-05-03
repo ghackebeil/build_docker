@@ -21,9 +21,11 @@ RUN cd ${PREFIX} && \
     ./${INSTALLER} && \
     rm ./${INSTALLER} && \
     rm ./installer.properties && \
-    rm ${TARGET}/opl && \
-    rm ${TARGET}/doc && \
-    rm ${TARGET}/cpoptimizer
+    rm -r ${TARGET}/opl && \
+    rm -r ${TARGET}/doc && \
+    rm -r ${TARGET}/cpoptimizer && \
+    rm -r ${TARGET}/cplex/matlab && \
+    rm -r ${TARGET}/cplex/examples
 # python 2.7
 RUN [ "$(python -c'import sys;print(sys.version_info[:2])')" != "(2, 7)" ] || \
     (cd ${PREFIX}/${TARGET}/cplex/python/2.7/x86-64_linux && \
