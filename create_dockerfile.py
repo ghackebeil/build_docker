@@ -1,8 +1,6 @@
 import os
 import argparse
 
-# TODO: A LABEL entries
-# (e.g., LABEL maintainer="...")
 base = \
 """FROM {source_image}
 CMD ["/bin/bash"]
