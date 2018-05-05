@@ -34,7 +34,7 @@ script:
 - mv coinhsl.tar ${BUILD_DIR}/${NAME}/
 # start the build
 - while sleep 9m; do echo "still running..."; done &
-- docker build --squash --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
+- docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
 - docker run test-builds:${NAME} /bin/sh -c "sleep 0"
 - ID=`docker ps -l -q`
 - docker cp ${ID}:/root/dynamic_vars.out .
