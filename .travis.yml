@@ -5,10 +5,9 @@ services:
 env:
   global:
   - BUILD_DIR=builds
-  - secure: Ri7AXEMu7+B0zV1ptFWwtRZY+6y2w8MUneV+AnAi1qInaaX4FLkA+F1QNpj0vN/r7S8rd+tvkL84HIREDT8GOcQeWfbm/r4I9M1CCIyclRBABZn82W8pJueSDOljxDBUA728L7pL0dDceoTXFHPUELp0b7qbsuVo+RDXxbUg8uUlH3wtBB19fOco8TOGSJulc9JkEbLLH+IPlBv/XKJ+evuLtvrsVZPQnfUQKQ7298Fqyg3OlmmaN8uhpUcgfpsWglrWYZiNd/r8Q5UXiqfI7Y19nudRH1giWVLmhwY9WK1LgtTTx9Pa8ca9racnwefcSWJYEalxyy/9yXhDi3u0abt3OeaQk4eSSiuC6+1GQuW5Mz6+wy26bZ81FUOfVVARs0Ld1zsr9R3NxgdtaAWaPCC7WubD+NT5sWeuB4jlr7Tw0rJMZ4YO32y8KTlqdq2Hwnlf+9IVvlBg8FXoovH2nWa+qrdAtPI3dIUkTRKPdzu8B6m/mcnKAzGsUwQtitfBdL6NUYJYQXZS3ss7A7QlEtdOknQ+EeVjHTJeFtE8VPgYbplElM9NL09wz1Pr2xJiSssKIUyvGuJNX6RHKwNn5VxBKuJmlpH1GVb7/+hgLm0FoU72z8EQdpZL1atU664Ll99iM02wsr/rwe+ZfEA6Lxqh1tTzdQeeuJ7d+MISHjA=
-  - secure: NQS4rkF09MbSFCN/No7LBlSzFJNemxojKXUUQ6F86cJrv/AUqFhsj+BW43zO1EVNwXArx9P70OEOGvtM7jakTif0DSQdhbn3SVUMhMaTytmSZfg5J07SDWA4OV1Ttr0wQN0MoTzoCFs4C8/6NKuxDLuyfhnBrk8N1JhFKqQhaf04qd9js+boB2QlVxHjGJCf0+nCz3fDUMXFQWZSpXMTlXzw0ESzNTtTtjtaeK/AjP8dcMQ8BkTNd3Pn1jV80GLrOLYaLpNOHSp+d21mRm2x+xZoS8XPWQSgxS9Qp9GU/e5flJi3N8ho/2awhKxnBaenf6p5rULtLDtv/vNpAQIvKrSL/l7i4r06f/V00Kf/saTn5LiPbsqpi3i0CYWH6tz+nBww5U2wgZWyrw0PPR54JhOAegKQtfwj1LeOCOILhWOANYKUcQfgU2D2KuqamV2M6FCfporx5l/6QKxFWlqUpf3wF60XAKbhOh8vOl1+FRkb9MT8u56V5H57rahfIJu8A7s0zyybulLYgNmB9/GhkY8g+ujumJXRNCgFR37CA9+0GJ28+cIVK59IwkaoV6pgKZC+74ILV9t+POU7zmwvWRvmecqjenRc7AFNjjp1ooQ1wHmUpkFJKahEqzu2lk8hjsuw2jgUfrvcZtQIDNqKCChRO4wORCCfJ7Cv+yD5aSE=
-  - secure: V+ptR7aPZ5Fm8h9SoNSk5CqYS+OBieYylueRUTdNTKu4WERwFZjcbyMc/RPq25+BeKtgl5yTHdzkXa9kelLYqso5prJmfIT03SEb4xljwREU4HOXCEKn0O18L9wL51pwV4TjMgStdUINMKGER2+ZeDxKUwm7SbvirizY5Ylu35p12I7R2BjfrFyC69JXJ9EYHHn7Zz1fglOcNIeoSieMCEUIwk6NxoGcVhKzJsV5zLcOSAHABUQQkr+TprSLVT1YPrZuwS/aghO/TL4opNP+QCL7PQkKDumJdjLi82mSEriKDqspf5IVnfSSuphgFEMxk8cDJZHxIG/kH5GOmVUwbxbmyZGJj50hWC6OFfq9ZYSXc3vPctjwAGmif6HjC8OFSl++MJWqDq2VkFIrdx0gRFY9jPPsm8PdNDUmF4Dp4u5eYPUUMwhQgpe12MVLxCne67StPUvj1A1rVFPfUznVSAUlusDCAv1E6tXsarFIbo4+6qmDJ/ht4VslsSehXs3CQ59JepJTsKMhalO1/bKS8ZoIyHjnBpptuIQRjnmQbUGZnihjI8SUNSLzXQ5bkpzuO+z4du84CUxzuf4yTm7LcvDusvSRrhAO9jebgUgvQeQ9f8IOIWmvjSM4QiutQtJloWo+DOWLFI9hXpolvaW9XOrXkP7zM4Qv19OyFW9kxYY=
-  - secure: f1y2xRyjr7/LVkhMYXXBkh9QFojJLFVPnF6+PS/8NtGDdyG/NRQMJ7g6URlIF9MimcX34kb08VSRH5O/dl6MhefzbQKAiMXHiCJq4fynaH7c/CZu9S60YjYo2wCywfq55xQcGSu0oU3yfCMwemhj7+7tFeEYgtm0ZnBNnjqV6Wc3uJBuFDHXVvnPuDL8817kqxj4ZW4TkWYwKPnOyZpKdlrjDKYrOwjjhtqIqI3Y+B8gGieFzLnIv9H8APH25z+d2DneALKXVTlhCtLj38E5g+ZqJzvFsZ5UI30WOpgfLZdZ8A03r+cCSngdsPo5+9hwW8OtNId8yu3YPP4/JR25yj4CM+w2urmlEKzsxtKVXr5+la5jVgk8puHe+2SjehBdMie/Qh9UdPL+YTuIe44KBqbNlvpfNBd+WFxHAEdhMvIUV0odERsGhnkfF1LhqjNEeFB4YnTeO65u+Wlat0AwnWb5yiUy0C8RcsFWz1M1fa/wAlC/0VEUzJZRnFsjwHvZdwQGaYrHvznXH2JW2+CdgUuoLAu/gLcTgggZlvfK6d/76IseePkPUiIqhuCCixFHedk/nwUP85s5ygxiOlbeEFW9Q63m8TzVZsh0fETYtTWrWtrfBlsxiphnOnRJkVIdxnYPfX0fUL3AjB+ru513CINNhK0gQ1cijTgqWsTSUf4=
+  - secure: lgKfb01AVxI0zVi0cOrqvTDFs2x7O71qtubOfFa+cRw9drKe3zQgiE6kLff10KkH8xRzHmkFJphqUpzJiNOYcVPLYpDvS/OvirYN7SAH+eV0ksTJKclOFVKHl1XDLzxnYKqEnti/dCi7iqVyde5TamUWZ6Icmdrj/6/bT6mBQQz9dduC0ZkyXEk1sCg2MYXdTyt1J2Y8leY66/eb5mVcexbvjUvR4T1vJ36t4jLoBIL3WbGsrDKgTdn2BRfMafIUWbr0Oxvrr1F8L1KrVENOPiTkTkDT/dOvUxO2Wwm1JqtPJ7iY2lJ4r+6I6eVNeHDtb0gqgZSKfrk5ehvDl3mRIJ3BwbOdPa/Rvuha3yqCVf3iLZ/ZauyceNAMYCpTimDqMDppiaZYgktF3FFSZLMsw0ueQ7odOYDIE1jULyje14kU/H+S4tMaEDjh5wxyij9Um0N/SUc5HzBYsx7h+p84ho4hzM4FYfH/7cNamxoKQJd4O0dgWK7kMdjKAf4yMmIZ9TJ7Tj9PUo86KfA7WnInkwoI56wyfn0AqVaQcAo9tA8OypMdooee+8h0VBbDQfYNBmGUFrinvvFU5ThQSvfFgnuoAdKz/BTFndL2mTzgSbV/UpS4vC8ihHxrcIfTZZ/rdtFxwq1lTY2RMcfX4Ksu7sfAeVDiUGauMXUgkT7rKWE=
+  - secure: hq+yTceNgQ7ZI+GZaNryO+46SxSt5k6VqgKuCLYfJ4pcOt9UhzzQSIR5bszNtobHmZ6oV88NGdtE4Vsk3ad7AakdYoBKO7fX0r+zPg759KigRh3ScV/FGZ+NvxjH+KCJUGztND9RjouDbSgg6zHgALFxOzop0SJiLWMBqMppK86S6qZxRuBm0ejmMVtWbailFt4h/9Aycx6xG0Y5QkI1MoonElEqvC897zSxiPfEM1k03o2Q0Z0jtrsvVT09Ac/+g9x/Q1RkleWXBT0SyESoZb5ZOuymEGhsprKKJxDYJFLdvxS6KhMAceyYvNsbSEnh7Ew85DRApHJCU5t27HFU564OA6vEbdDn3g40XEk7e9M/JLwNtLwEg+dYxbp0/BTb1my1eep+JDlaHAy3Pukt4ld/ItTn9k4fBLrVKMRxT3r7G3+cmdPa3Ix95CCF7RGozFS8G3ssDSEo75qVSBJwL+3IZcGqrPt3sdjao2IpVuGpstWaJHy8tzqAK7VTr0R1vH7+UikcE8dhNsAyG4DmuQMf6YvbmIQBSXzge7RZ1EsJFuk6dB/+Jr4tVS5WAdiXpuu6x6bZ+BWtabOP0U7Cve5asRIvySm0N3i9DSRxz5drj10giRDZ9mvhky+0DPf10WbqFDTQhBT74f9pljrETAzNtXsdMkQo1GKuKh2tPrA=
+  - secure: rcY73GgDwTvL4XXXmgcHhy3dIUGKMkuZmjctfZe5iiBIoSUUA/BjFuzyq3tqp85J0F6YLyYlsoV6gPi4mo4AE721/P9hSCch9TRyZz5xYEh/V1zic4tg4i4xHf8SFOupyszA67rCYwQ6vH21NwweezfU0lqQUGFNMFe5+Yi0fmzmdG4F529Qt55YT23Jm8h5eJlR+52VBoA9IwDc5aOxRW0O/3aVDJj8CtTW0bXdyJ9Xvu7NuUpEApdiZ7Ian684iU5oQDdulCZuIj8g9l1FIV/AC+IaoS7Rol8SC70MOvbD3rVL6cIVJZErcvgRbw0uRxtXNRWbIKrxPQWdNboy5Q94bEwnLMg3DB68Oz39yQvqBKaz6+N4UoZRtjF2GxQc6iKyLqP6iSwcVdExcdPmYzzoY1UAeLZYDLDQrSqapnBIGpAjrbSx636w1Ezcbz8jrOWpAc/ybQbKTLldWTUQa42sUO+ElYtxsA/SQuqMLqpA9TAezZJWqyilRLUhOjG039YTAt5bM2QwfuwAt/J+ycqG3Uz0roXcweG84pbkQO/qKjcwCkTh8xqowE9BymJzJPnnWI86jIMlMqaP2Y9aiMFCqxPd8uFruUdbho25oy9zFpG/nnurybXa/s10TV4qol4nX9wZHXbjfXzQDvSaa+937JPgRgnim4oCsu1D6Fc=
   matrix:
   - NAME=python_3.7-rc SRC_IMAGE=python:3.7-rc-stretch SRC_PYTHON_EXE=python
   - NAME=python_3.6    SRC_IMAGE=python:3.6-stretch    SRC_PYTHON_EXE=python
@@ -21,18 +20,12 @@ env:
 install:
 - sudo apt-get install -y sshpass
 script:
-- echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
+- echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 - mkdir ${BUILD_DIR}
 - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
-# get cplex installer
-- sshpass -p ${RD_PASSWORD} scp -q -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${RD_USERNAME}@141.212.164.88:travis_files/cplex_studio128.linux-x86-64.bin.gz .
-- gunzip cplex_studio128.linux-x86-64.bin.gz
-- mv cplex_studio128.linux-x86-64.bin ${BUILD_DIR}/${NAME}/
-# get coinhsl lib
-- sshpass -p ${RD_PASSWORD} scp -q -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${RD_USERNAME}@141.212.164.88:travis_files/coinhsl.tar.gz .
+- echo "$COINHSL_PASSPHRASE" | gpg --passphrase-fd 0 --armor -d encrypted/coinhsl.tar.gz.gpg > coinhsl.tar.gz
 - gunzip coinhsl.tar.gz
 - mv coinhsl.tar ${BUILD_DIR}/${NAME}/
-# start the build
 - while sleep 9m; do echo "still running..."; done &
 - docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
 - docker run test-builds:${NAME} /bin/sh -c "sleep 0"
@@ -47,6 +40,6 @@ script:
      ID=`docker ps -l -q`
      docker commit --change "ENV ${p}" ${ID} test-builds:${NAME}
   done < dynamic_vars.out
-- docker tag test-builds:${NAME} $DOCKERHUB_USER/test-builds:${NAME}
-- travis_retry docker push $DOCKERHUB_USER/test-builds:${NAME}
+- docker tag test-builds:${NAME} $DOCKERHUB_USERNAME/test-builds:${NAME}
+- travis_retry docker push $DOCKERHUB_USERNAME/test-builds:${NAME}
 - kill %1

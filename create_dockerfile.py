@@ -5,12 +5,11 @@ base = \
 """FROM {source_image}
 CMD ["/bin/bash"]
 
-COPY cplex_studio128.linux-x86-64.bin /root/
 COPY coinhsl.tar /root/
 """
 
 installs = ['install_scripts/libs.sh',
-            'install_scripts/cplex.sh',
+#            'install_scripts/cplex.sh',
             'install_scripts/gams.sh',
             'install_scripts/baron.sh',
             'install_scripts/gjh_asl_json.sh',
