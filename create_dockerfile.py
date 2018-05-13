@@ -5,7 +5,6 @@ base = \
 """FROM {source_image}
 CMD ["/bin/bash"]
 
-COPY coinhsl.tar /root/
 """
 
 installs = ['install_scripts/libs.sh',
@@ -13,6 +12,7 @@ installs = ['install_scripts/libs.sh',
             'install_scripts/gams.sh',
             'install_scripts/baron.sh',
             'install_scripts/gjh_asl_json.sh',
+            'install_scripts/gjh.sh',
             'install_scripts/glpk.sh',
             'install_scripts/ipopt.sh',
             'install_scripts/cbc.sh']

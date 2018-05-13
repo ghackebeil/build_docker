@@ -23,9 +23,6 @@ script:
 - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 - mkdir ${BUILD_DIR}
 - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
-- echo "$COINHSL_PASSPHRASE" | gpg --passphrase-fd 0 --armor -d encrypted/coinhsl.tar.gz.gpg > coinhsl.tar.gz
-- gunzip coinhsl.tar.gz
-- mv coinhsl.tar ${BUILD_DIR}/${NAME}/
 - while sleep 9m; do echo "still running..."; done &
 - docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
 - docker run test-builds:${NAME} /bin/sh -c "sleep 0"
