@@ -14,6 +14,7 @@ RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.zip && \
     cd ${TARGET}/Thirdparty && ./get.ASL 2> /dev/null && \
     cd .. && \
-    make -j$(nproc) > /dev/null
+    make -j$(nproc) > /dev/null && \
+    echo GJH_ASL_JSON_VERSION `${PREFIX}/${TARGET}/bin/gjh_asl_json -v` >> ${DYNAMIC_VARS_FILE}
 ENV PATH="${PREFIX}/${TARGET}/bin:${PATH}"
 ARG TARGET
