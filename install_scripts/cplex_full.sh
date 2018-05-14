@@ -1,6 +1,3 @@
-#
-# Install Cplex
-#
 RUN echo "" && \
     echo "================" && \
     echo "INSTALLING CPLEX" && \

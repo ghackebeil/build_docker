@@ -1,6 +1,3 @@
-#
-# Install Baron
-#
 RUN echo "" && \
     echo "================" && \
     echo "INSTALLING BARON" && \

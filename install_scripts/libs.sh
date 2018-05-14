@@ -1,6 +1,3 @@
-#
-# Install common Linux libraries
-#
 RUN echo "" && \
     echo "======================" && \
     echo "INSTALLING COMMON LIBS" && \

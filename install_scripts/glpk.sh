@@ -1,6 +1,3 @@
-#
-# Install Glpk
-#
 RUN echo "" && \
     echo "===============" && \
     echo "INSTALLING GLPK" && \

@@ -1,6 +1,3 @@
-#
-# Install GAMS
-#
 RUN echo "" && \
     echo "===============" && \
     echo "INSTALLING GAMS" && \

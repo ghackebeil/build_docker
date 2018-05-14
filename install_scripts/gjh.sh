@@ -1,6 +1,3 @@
-#
-# Install gjh_asl_json
-#
 RUN echo "" && \
     echo "==============" && \
     echo "INSTALLING GJH" && \

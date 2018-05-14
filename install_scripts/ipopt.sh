@@ -1,6 +1,3 @@
-#
-# Install Ipopt
-#
 RUN echo "" && \
     echo "================" && \
     echo "INSTALLING IPOPT" && \

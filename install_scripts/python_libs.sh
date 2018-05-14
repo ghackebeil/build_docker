@@ -1,6 +1,3 @@
-#
-# Install common Python libraries
-#
 RUN echo "" && \
     echo "======================" && \
     echo "INSTALLING PYTHON LIBS" && \

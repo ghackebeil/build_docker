@@ -1,6 +1,3 @@
-#
-# Install CBC
-#
 RUN echo "" && \
     echo "==============" && \
     echo "INSTALLING CBC" && \
