@@ -8,7 +8,7 @@ CMD ["/bin/bash"]
 """
 
 installs = ['install_scripts/libs.sh',
-#            'install_scripts/cplex.sh',
+#            'install_scripts/cplex_full.sh',
             'install_scripts/gams.sh',
             'install_scripts/baron.sh',
             'install_scripts/gjh_asl_json.sh',
