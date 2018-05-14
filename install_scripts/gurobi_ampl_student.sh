@@ -9,7 +9,7 @@ RUN cd ${PREFIX} && \
     wget -q "https://ampl.com/netlib/ampl/student/linux64/${TARGET}.tgz" && \
     mkdir -p Gurobi/bin && \
     mkdir -p Gurobi/lib && \
-    tar xv -C Gurobi ${TARGET}.tgz && \
+    tar xt -C Gurobi ${TARGET}.tgz && \
     rm ${TARGET}.tgz && \
     mv Gurobi/*.so Gurobi/lib/ && \
     mv Gurobi/gurobi Gurobi/bin/gurobi_ampl && \
