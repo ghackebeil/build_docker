@@ -4,8 +4,9 @@ RUN echo "" && \
     echo "===============" && \
     echo ""
 ARG TARGET="linux_x64_64_sfx.exe"
-ENV GAMS_VERSION="25.0.3"
 ARG GAMS_DIR="gams25.0_linux_x64_64_sfx"
+ENV GAMS_VERSION="25.0.3"
+ENV PATH="${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}:${PATH}"
 RUN mkdir ${PREFIX}/GAMS_${GAMS_VERSION} && \
     cd ${PREFIX}/GAMS_${GAMS_VERSION} && \
     wget -q "https://d37drm4t2jghv5.cloudfront.net/distributions/${GAMS_VERSION}/linux/${TARGET}" && \
@@ -26,7 +27,6 @@ RUN mkdir ${PREFIX}/GAMS_${GAMS_VERSION} && \
     rm -r ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/Delphi && \
     rm -r ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/GAMS && \
     rm -r ${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}/apifiles/VBnet
-ENV PATH="${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}:${PATH}"
 ARG TARGET
 #
 # Install GAMS Python API (but not on PyPy or CPython-3.5)

@@ -4,6 +4,7 @@ RUN echo "" && \
     echo "=====================" && \
     echo ""
 ARG TARGET="cplex"
+ENV PATH="${PREFIX}/Cplex/bin:${PATH}"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.gz && \
     wget -q "https://ampl.com/netlib/ampl/student/linux64/${TARGET}.gz" && \
@@ -12,5 +13,4 @@ RUN cd ${PREFIX} && \
     mv ${TARGET} Cplex/bin/cplexamp && \
     chmod u+x Cplex/bin/cplexamp && \
     echo CPLEX_AMPL_VERSION `Cplex/bin/cplexamp -v | grep -Po '\d+.\d+.\d+'` >> ${DYNAMIC_VARS_FILE}
-ENV PATH="${PREFIX}/Cplex/bin:${PATH}"
 ARG TARGET

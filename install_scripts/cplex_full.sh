@@ -6,6 +6,7 @@ RUN echo "" && \
 ENV CPLEX_VERSION="12.8"
 ARG TARGET="Cplex-${CPLEX_VERSION}"
 ARG INSTALLER="cplex_studio128.linux-x86-64.bin"
+ENV PATH="${PREFIX}/${TARGET}/cplex/bin/x86-64_linux:${PATH}"
 RUN cd ${PREFIX} && \
     echo INSTALLER_UI=silent > installer.properties && \
     echo LICENSE_ACCEPTED=TRUE >> installer.properties && \
@@ -44,6 +45,5 @@ RUN python -c "import __pypy__" 2> /dev/null || \
     (cd ${PREFIX}/${TARGET}/cplex/python/3.6/x86-64_linux && \
      python setup.py install > /dev/null && \
      python -c "import cplex")
-ENV PATH="${PREFIX}/${TARGET}/cplex/bin/x86-64_linux:${PATH}"
 ARG TARGET
 ARG INSTALLER

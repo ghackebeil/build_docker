@@ -4,6 +4,8 @@ RUN echo "" && \
     echo "======================" && \
     echo ""
 ARG TARGET="gurobi"
+ENV PATH="${PREFIX}/Gurobi/bin:${PATH}"
+ENV LD_LIBRARY_PATH="${PREFIX}/Gurobi/lib:${LD_LIBRARY_PATH}"
 RUN cd ${PREFIX} && \
     rm -rf ${TARGET}.tgz && \
     wget -q "https://ampl.com/netlib/ampl/student/linux64/${TARGET}.tgz" && \
@@ -14,7 +16,7 @@ RUN cd ${PREFIX} && \
     mv Gurobi/*.so Gurobi/lib/ && \
     mv Gurobi/gurobi Gurobi/bin/gurobi_ampl && \
     chmod u+x Gurobi/bin/gurobi_ampl && \
+    echo \#\!/bin/bash > Gurobi/bin/gurobi_cl && \
+    chmod u+x Gurobi/bin/gurobi_cl && \
     echo GUROBI_AMPL_VERSION `Gurobi/bin/gurobi_ampl -v | grep -Po '\d+.\d+.\d+'` >> ${DYNAMIC_VARS_FILE}
-ENV PATH="${PREFIX}/Gurobi/bin:${PATH}"
-ENV LD_LIBRARY_PATH="${PREFIX}/Gurobi/lib:${LD_LIBRARY_PATH}"
 ARG TARGET
