@@ -17,7 +17,6 @@ int main(void)\n\
   printf("%s\\n", gsl_version);\n\
   return 0;\n\
 }' > tmp.c && \
-    cat ./tmp.c && \
     gcc ./amplgsl.dll ./tmp.c -Wl,-R -Wl,. -o tmp && ./tmp >> ${DYNAMIC_VARS_FILE} && \
     rm ./tmp && \
     rm ./tmp.c && \
