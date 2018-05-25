@@ -14,7 +14,7 @@ RUN cd ${PREFIX} && \
 extern const char* gsl_version;\n\
 int main(void)\n\
 {\n\
-  printf("%s\\\n", gsl_version);\n\
+  printf("%s\\n", gsl_version);\n\
   return 0;\n\
 }' > tmp.c && \
     cat ./tmp.c && \
