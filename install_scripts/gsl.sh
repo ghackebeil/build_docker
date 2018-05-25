@@ -10,13 +10,14 @@ RUN cd ${PREFIX} && \
     mkdir Gsl && \
     unzip -q -d Gsl ${TARGET}.zip && \
     cd Gsl && \
-    echo '#include <stdio.h>\n\
-extern const char* gsl_version;\n\
-int main(void)\n\
-{\n\
-  printf("%s\n", gsl_version);\n\
-  return 0;\n\
-}\n' > tmp.c && \
+    echo "#include <stdio.h>
+extern const char* gsl_version;
+int main(void)
+{
+  printf(\"%s\\\n\", gsl_version);
+  return 0;
+}" > tmp.c && \
+    cat ./tmp.c && \
     gcc ./amplgsl.dll ./tmp.c -Wl,-R -Wl,. -o tmp && ./tmp >> ${DYNAMIC_VARS_FILE} && \
     rm ./tmp && \
     rm ./tmp.c && \
