@@ -14,7 +14,7 @@ RUN cd ${PREFIX} && \
 extern const char* gsl_version;\n\
 int main(void)\n\
 {\n\
-  printf("%s\\n", gsl_version);\n\
+  printf("GSL_VERSION %s\\n", gsl_version);\n\
   return 0;\n\
 }' > tmp.c && \
     gcc ./amplgsl.dll ./tmp.c -Wl,-R -Wl,. -o tmp && ./tmp >> ${DYNAMIC_VARS_FILE} && \
