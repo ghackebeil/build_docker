@@ -28,7 +28,6 @@ script:
 - docker run test-builds:${NAME} /bin/sh -c "sleep 0"
 - ID=`docker ps -l -q`
 - docker cp ${ID}:/root/dynamic_vars.out .
-- cat dynamic_vars.out
 - docker run test-builds:${NAME} rm /root/dynamic_vars.out
 - |
   while read p
@@ -38,6 +37,6 @@ script:
      ID=`docker ps -l -q`
      docker commit --change "ENV ${p}" ${ID} test-builds:${NAME}
   done < dynamic_vars.out
-#- docker tag test-builds:${NAME} $DOCKERHUB_USERNAME/test-builds:${NAME}
-#- travis_retry docker push $DOCKERHUB_USERNAME/test-builds:${NAME}
+- docker tag test-builds:${NAME} $DOCKERHUB_USERNAME/test-builds:${NAME}
+- travis_retry docker push $DOCKERHUB_USERNAME/test-builds:${NAME}
 - kill %1
