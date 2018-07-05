@@ -24,7 +24,7 @@ script:
 - mkdir ${BUILD_DIR}
 - python create_dockerfile.py ${SRC_IMAGE} ${SRC_PYTHON_EXE} ${BUILD_DIR}/${NAME}
 - while sleep 9m; do echo "still running..."; done &
-- docker build --compress --no-cache --pull -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
+- docker build --compress --no-cache -t test-builds:${NAME} ${BUILD_DIR}/${NAME}
 - docker run test-builds:${NAME} /bin/sh -c "sleep 0"
 - ID=`docker ps -l -q`
 - docker cp ${ID}:/root/dynamic_vars.out .
