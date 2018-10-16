@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir -U \
       numpy \
       scipy \
       matplotlib \
+      seaborn \
       mpi4py \
       cryptography \
       sympy \
