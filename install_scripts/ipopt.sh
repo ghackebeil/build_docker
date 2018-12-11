@@ -20,7 +20,10 @@ RUN cd ${PREFIX} && \
     cd .. && \
     mkdir build && \
     cd build && \
-    ../configure CXX=g++ CC=gcc F77=gfortran > /dev/null && \
+    ../configure CXX=g++ CC=gcc F77=gfortran ADD_CPPFLAGS="-DENABLE_RUN_MPC" > /dev/null && \
+    make -j$(nproc) > /dev/null && \
+    make install > /dev/null && \
+    cd Ipopt/contrib/sIPOPT && \
     make -j$(nproc) > /dev/null && \
     make install > /dev/null
 ARG TARGET
