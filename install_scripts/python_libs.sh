@@ -5,11 +5,12 @@ RUN echo "" && \
     echo ""
 RUN pip install --no-cache-dir -U \
       pip \
-      setuptools && \
-    pip install --no-cache-dir \
+      setuptools \
+      wheel
+RUN (python -c "import __pypy__" &> /dev/null && pip install --no-cache-dir numpy==1.15.4) || pip install --no-cache-dir numpy
+RUN pip install --no-cache-dir \
       sphinx \
       sphinx_rtd_theme \
-      wheel \
       virtualenv \
       cffi \
       numpy \
