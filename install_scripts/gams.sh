@@ -4,7 +4,7 @@ RUN echo "" && \
     echo "===============" && \
     echo ""
 ARG TARGET="linux_x64_64_sfx.exe"
-ARG GAMS_DIR="gams25.1_linux_x64_64_sfx"
+ARG GAMS_DIR="gams26.1_linux_x64_64_sfx"
 ENV GAMS_VERSION="26.1.0"
 ENV PATH="${PREFIX}/GAMS_${GAMS_VERSION}/${GAMS_DIR}:${PATH}"
 RUN mkdir ${PREFIX}/GAMS_${GAMS_VERSION} && \
