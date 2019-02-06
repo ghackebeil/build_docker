@@ -13,10 +13,6 @@ RUN pip install --no-cache-dir \
       sphinx_rtd_theme \
       virtualenv \
       cffi \
-      numpy \
-      scipy \
-      matplotlib \
-      seaborn \
       mpi4py \
       cryptography \
       sympy \
@@ -27,7 +23,10 @@ RUN pip install --no-cache-dir \
       openpyxl \
       pymysql \
       xlrd
-# These may fail on PyPy / Python 3.7
+# These may fail on PyPy
+RUN pip install --no-cache-dir scipy || echo failed to install scipy
+RUN pip install --no-cache-dir matplotlib || echo failed to install matplotlib
+RUN pip install --no-cache-dir seaborn || echo failed to install seaborn
 RUN pip install --no-cache-dir PyYAML || \
     pip install https://github.com/yaml/pyyaml/archive/4.1.zip || \
     echo failed to install PyYAML
