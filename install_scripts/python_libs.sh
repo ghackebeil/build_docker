@@ -14,7 +14,6 @@ RUN python -O -m pip install --no-cache-dir \
       virtualenv \
       cffi \
       mpi4py \
-      cryptography \
       sympy \
       networkx \
       Pyro4 \
