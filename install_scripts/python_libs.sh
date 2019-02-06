@@ -22,13 +22,12 @@ RUN pip install \
       openpyxl \
       pymysql \
       xlrd
-# These may fail on PyPy
-RUN pip install scipy || echo failed to install scipy
-RUN pip install matplotlib || echo failed to install matplotlib
-RUN pip install seaborn || echo failed to install seaborn
+# These currently fail on PyPy
+RUN python -c "import __pypy__" &> /dev/null || pip install scipy matplotlib pandas seaborn
+# These may not work on PyPy / Python3.7
 RUN pip install PyYAML || \
     pip install https://github.com/yaml/pyyaml/archive/4.1.zip || \
     echo failed to install PyYAML
 RUN pip install numba || echo failed to install numba
-RUN pip install pandas || echo failed to install pandas
 RUN pip install pyodbc || echo failed to install pyodbc
+RUN pip list
