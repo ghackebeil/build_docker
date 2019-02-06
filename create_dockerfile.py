@@ -8,6 +8,7 @@ CMD ["/bin/bash"]
 """
 
 installs = ['install_scripts/libs.sh',
+            'install_scripts/python_libs.sh',
 #            'install_scripts/cplex_full.sh',
 #            'install_scripts/cplex_ampl_student.sh',
 #            'install_scripts/gurobi_ampl_student.sh',
@@ -20,7 +21,6 @@ installs = ['install_scripts/libs.sh',
             'install_scripts/glpk.sh',
             'install_scripts/ipopt.sh',
             'install_scripts/cbc.sh']
-python_installs = ['install_scripts/python_libs.sh']
 dynamic_vars_filename = '/root/dynamic_vars.out'
 
 def create_dockerfile(source_image, python_exe, dirname):
@@ -39,9 +39,6 @@ def create_dockerfile(source_image, python_exe, dirname):
     out += ("ARG DYNAMIC_VARS_FILE="+dynamic_vars_filename+"\n")
     out += ("RUN touch "+dynamic_vars_filename+"\n")
     for fname in installs:
-        with open(fname) as f:
-            out += f.read()
-    for fname in python_installs:
         with open(fname) as f:
             out += f.read()
     if not os.path.exists(dirname):
