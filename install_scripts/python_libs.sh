@@ -7,12 +7,12 @@ RUN pip install -U \
       pip \
       setuptools \
       wheel
-RUN ((python -c "import __pypy__" 2> /dev/null) && pip install numpy==1.15.4) || (pip install numpy)
 RUN pip install \
       sphinx \
       sphinx_rtd_theme \
       virtualenv \
       cffi \
+      numpy \
       mpi4py \
       sympy \
       networkx \
@@ -21,7 +21,8 @@ RUN pip install \
       ipython \
       openpyxl \
       pymysql \
-      xlrd
+      xlrd \
+      pint
 # These currently fail on PyPy
 RUN (python -c "import __pypy__" 2> /dev/null) || (pip install scipy matplotlib pandas seaborn)
 # These may not work on PyPy / Python3.7
