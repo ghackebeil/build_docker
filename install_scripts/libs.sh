@@ -3,7 +3,8 @@ RUN echo "" && \
     echo "INSTALLING COMMON LIBS" && \
     echo "======================" && \
     echo ""
-RUN apt-get -q update && \
+RUN dpkg --add-architecture i386 && \
+    apt-get -q update && \
     apt-get -q -y --no-install-recommends install \
         build-essential libssl-dev libffi-dev \
         wget zip unzip \
