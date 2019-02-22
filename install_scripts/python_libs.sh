@@ -3,16 +3,19 @@ RUN echo "" && \
     echo "INSTALLING PYTHON LIBS" && \
     echo "======================" && \
     echo ""
-ENV DOCKER_PYTHON_CORE=pip \
+ENV DOCKER_PYTHON_CORE="\
+    pip \
     setuptools \
     wheel \
     virtualenv \
     nose \
     coverage \
-    codecov
+    codecov \
+"
 RUN pip install -U ${DOCKER_PYTHON_CORE}
 
-ENV DOCKER_PYTHON_OPTIONAL=sphinx \
+ENV DOCKER_PYTHON_OPTIONAL="\
+      sphinx \
       sphinx_rtd_theme \
       cffi \
       numpy \
@@ -26,14 +29,17 @@ ENV DOCKER_PYTHON_OPTIONAL=sphinx \
       pymysql \
       xlrd \
       z3-solver \
-      pint
+      pint \
+"
 RUN pip install ${DOCKER_PYTHON_OPTIONAL}
 
 # These currently fail on PyPy
-ENV DOCKER_PYTHON_NOT_PYPY=scipy \
+ENV DOCKER_PYTHON_NOT_PYPY="\
+    scipy \
     matplotlib \
     pandas \
-    seaborn
+    seaborn \
+"
 RUN (python -c "import __pypy__" 2> /dev/null) || (pip install ${DOCKER_PYTHON_NOT_PYPY})
 
 # These are fragile and may not work on PyPy / Python3.7
@@ -46,8 +52,10 @@ RUN pip list
 
 # These are the Python packages that should be removed to return to a
 # "SLIM" build
-ENV DOCKER_PYTHON_SLIM=${DOCKER_PYTHON_OPTIONAL} \
+ENV DOCKER_PYTHON_SLIM="\
+    ${DOCKER_PYTHON_OPTIONAL} \
     ${DOCKER_PYTHON_NOT_PYPY} \
     pyyaml \
     numba \
-    pyodbc
+    pyodbc \
+"
