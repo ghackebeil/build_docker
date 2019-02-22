@@ -22,6 +22,7 @@ RUN pip install \
       openpyxl \
       pymysql \
       xlrd \
+      z3-solver \
       pint
 # These currently fail on PyPy
 RUN (python -c "import __pypy__" 2> /dev/null) || (pip install scipy matplotlib pandas seaborn)
