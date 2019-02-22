@@ -3,16 +3,17 @@ RUN echo "" && \
     echo "INSTALLING PYTHON LIBS" && \
     echo "======================" && \
     echo ""
-ENV DOCKER_PYTHON_CORE="\
-    pip \
+RUN pip install -U pip \
     setuptools \
     wheel \
     virtualenv \
     nose \
     coverage \
-    codecov \
-"
-RUN pip install -U ${DOCKER_PYTHON_CORE}
+    codecov
+# This picks up the packages installed above, plus any of their
+# dependencies
+ENV DOCKER_PYTHON_CORE=`pip list --format freeze | cut -d= -f1`
+RUN echo "DOCKER_PYTHON_CORE=${DOCKER_PYTHON_CORE}" && echo ""
 
 ENV DOCKER_PYTHON_OPTIONAL="\
       sphinx \
