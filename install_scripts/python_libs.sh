@@ -3,13 +3,14 @@ RUN echo "" && \
     echo "INSTALLING PYTHON LIBS" && \
     echo "======================" && \
     echo ""
-RUN pip install -U \
-      pip \
-      setuptools \
-      wheel
-
-ENV DOCKER_PYTHON_CORE=virtualenv nose coverage codecov
-RUN pip install ${DOCKER_PYTHON_CORE}
+ENV DOCKER_PYTHON_CORE=pip \
+    setuptools \
+    wheel \
+    virtualenv \
+    nose \
+    coverage \
+    codecov
+RUN pip install -U ${DOCKER_PYTHON_CORE}
 
 ENV DOCKER_PYTHON_OPTIONAL=sphinx \
       sphinx_rtd_theme \
